@@ -5,8 +5,10 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import ru.leather.onlineshop.model.Product;
 import ru.leather.onlineshop.service.ProductService;
+
+import java.util.Map;
 
 @Controller
 public class ProductController {
@@ -19,9 +21,10 @@ public class ProductController {
         this.productService = productService;
     }
 
-    @RequestMapping(value = "/product", method = RequestMethod.GET)
-    public String listUsers(Model model){
-        model.addAttribute("allProduct", productService.getAll());
+    @RequestMapping(value = "/product")
+    public String listUsers(Map<String, Object> model){
+        model.put("newProduct", new Product());
+        model.put("allProduct", productService.getAll());
         return "product";
     }
 }

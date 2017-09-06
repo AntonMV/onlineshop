@@ -47,7 +47,6 @@
 </head>
 <body>
     <h1>Product Details</h1>
-
     <table class="tg">
         <tr>
             <th width="80">ID</th>
@@ -56,15 +55,17 @@
             <th width="120">Price</th>
             <th width="120">Quantity</th>
         </tr>
-        <c:forEach items="${allProduct}" var="product">
+        <c:if test="${!empty allProduct}">
+        <c:forEach var="product" items="${allProduct}">
             <tr>
-                <td>${product.id}</td>
-                <td>${product.description}</td>
-                <td>${product.name}</td>
-                <td>${product.price}</td>
-                <td>${product.quantity}</td>
+                <td>${newProduct.id}</td>
+                <td>${newProduct.description}</td>
+                <td>${newProduct.name}</td>
+                <td>${newProduct.price}</td>
+                <td>${newProduct.quantity}</td>
             </tr>
         </c:forEach>
+        </c:if>
     </table>
 </body>
 </html>
