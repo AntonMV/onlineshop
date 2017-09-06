@@ -13,6 +13,12 @@
     <!--Поддержка автоматического связывания посредством аннотаций, но необходимо создавать бины для компонентов отдельно-->
     <!--<context:annotation-config/>-->
 
+    <!--Поиск представления через арбитр по шаблону-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/pages/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
     <!--Поддержка автоматического связывания и создания компонентов на основе аннотаций-->
     <context:component-scan base-package="ru.leather.onlineshop"/>
 
