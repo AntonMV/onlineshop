@@ -51,10 +51,10 @@
     <table class="tg">
         <tr>
             <th width="80">ID</th>
+            <th width="120">Description</th>
             <th width="120">Name</th>
-            <th width="120">Age</th>
-            <th width="120">Admin</th>
-            <th width="120">Date</th>
+            <th width="120">Price</th>
+            <th width="120">Quantity</th>
         </tr>
         <c:forEach items="${allProduct}" var="product">
             <tr>
