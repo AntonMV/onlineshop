@@ -19,19 +19,20 @@
     <!--Нужен для хранения интерфейсов репозетария JPA -->
     <jpa:repositories base-package="ru.leather.onlineshop.repository"/>
 
-    <!-- EntityManagerFactory для связи с базой данных -->
+    <!--Настройка emf(фабрики диспетчера сущностей) механизма JPA, управляемого контейнером -->
     <bean id="emf" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="dataSource" ref="dataSource" />
-        <!--Поставщик данных - hibernate-->
-        <property name="jpaVendorAdapter">
-            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
-        </property>
-        <!--поиск сущностей в этом пакете-->
-        <property name="packagesToScan"
-                  value="ru.leather.onlineshop"/>
+        <property name="jpaVendorAdapter" ref="jpaVendorAdapter" />
     </bean>
 
-    <!-- Datasource. Источник данных - база MySQL -->
+    <bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+        <property name="database" value="MYSQL" />
+        <property name="showSql" value="true"/>
+        <property name="generateDdl" value="false"/>
+        <property name="databasePlatform" value="org.hibernate.dialect.HSQLDialect" />
+    </bean>
+
+    <!-- Datasource. Источник данных Spring JDBC - база MySQL -->
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />
         <property name="url" value="jdbc:mysql://localhost:3306/onshope" />
