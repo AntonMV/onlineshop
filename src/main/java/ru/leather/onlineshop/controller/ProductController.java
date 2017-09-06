@@ -22,7 +22,6 @@ public class ProductController {
     @RequestMapping(value = "/product", method = RequestMethod.GET)
     public String listUsers(Model model){
         model.addAttribute("allProduct", productService.getAll());
-
         return "product";
     }
 }

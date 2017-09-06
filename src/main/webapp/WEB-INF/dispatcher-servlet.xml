@@ -2,16 +2,19 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+       xmlns:jpa="http://www.springframework.org/schema/data/jpa" xmlns:tx="http://www.springframework.org/schema/tx"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/context
        http://www.springframework.org/schema/context/spring-context.xsd
        http://www.springframework.org/schema/data/jpa
-       http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
+       http://www.springframework.org/schema/data/jpa/spring-jpa.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
     <!--Поддержка автоматического связывания посредством аннотаций, но необходимо создавать бины для компонентов отдельно-->
     <!--<context:annotation-config/>-->
+
+    <!--Поддержка аннотаций @Transaction -->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
 
     <!--Поиск представления через арбитр по шаблону-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -20,22 +23,25 @@
     </bean>
 
     <!--Поддержка автоматического связывания и создания компонентов на основе аннотаций-->
-    <context:component-scan base-package="ru.leather.onlineshop"/>
+    <context:component-scan base-package="ru.leather.onlineshop" />
 
-    <!--Нужен для хранения интерфейсов репозетария JPA -->
-    <jpa:repositories base-package="ru.leather.onlineshop.repository"/>
+    <!--Обеспечивает работу с транзакциями в Spring -->
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="emf"/>
+    </bean>
 
     <!--Настройка emf(фабрики диспетчера сущностей) механизма JPA, управляемого контейнером -->
     <bean id="emf" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="dataSource" ref="dataSource" />
         <property name="jpaVendorAdapter" ref="jpaVendorAdapter" />
+        <property name="packagesToScan" value="ru.leather.onlineshop"/>
     </bean>
 
     <bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
         <property name="database" value="MYSQL" />
         <property name="showSql" value="true"/>
         <property name="generateDdl" value="false"/>
-        <property name="databasePlatform" value="org.hibernate.dialect.HSQLDialect" />
+        <property name="databasePlatform" value="org.hibernate.dialect.MySQLDialect" />
     </bean>
 
     <!-- Datasource. Источник данных Spring JDBC - база MySQL -->
@@ -46,6 +52,9 @@
         <property name="password" value="root" />
     </bean>
 
+    <!--Нужен для хранения абстрактного интерфейса репозетария JPA -->
+    <jpa:repositories base-package="ru.leather.onlineshop.repository" entity-manager-factory-ref="emf"
+                      transaction-manager-ref="transactionManager"/>
 
 
 </beans>
