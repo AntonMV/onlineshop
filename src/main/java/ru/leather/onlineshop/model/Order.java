@@ -4,15 +4,14 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import java.sql.Timestamp;
 
 @Entity
 public class Order {
     private int id;
-    private int userId;
-    private Double price;
+    private Integer productId;
+    private Integer userId;
     private Integer quantity;
-    private Timestamp date;
+    private String date;
     private Integer number;
 
     @Id
@@ -26,23 +25,23 @@ public class Order {
     }
 
     @Basic
-    @Column(name = "userId")
-    public int getUserId() {
-        return userId;
+    @Column(name = "productId")
+    public Integer getProductId() {
+        return productId;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setProductId(Integer productId) {
+        this.productId = productId;
     }
 
     @Basic
-    @Column(name = "price")
-    public Double getPrice() {
-        return price;
+    @Column(name = "userId")
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setPrice(Double price) {
-        this.price = price;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     @Basic
@@ -57,11 +56,11 @@ public class Order {
 
     @Basic
     @Column(name = "date")
-    public Timestamp getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Timestamp date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
@@ -83,8 +82,8 @@ public class Order {
         Order order = (Order) o;
 
         if (id != order.id) return false;
-        if (userId != order.userId) return false;
-        if (price != null ? !price.equals(order.price) : order.price != null) return false;
+        if (productId != null ? !productId.equals(order.productId) : order.productId != null) return false;
+        if (userId != null ? !userId.equals(order.userId) : order.userId != null) return false;
         if (quantity != null ? !quantity.equals(order.quantity) : order.quantity != null) return false;
         if (date != null ? !date.equals(order.date) : order.date != null) return false;
         if (number != null ? !number.equals(order.number) : order.number != null) return false;
@@ -95,8 +94,8 @@ public class Order {
     @Override
     public int hashCode() {
         int result = id;
-        result = 31 * result + userId;
-        result = 31 * result + (price != null ? price.hashCode() : 0);
+        result = 31 * result + (productId != null ? productId.hashCode() : 0);
+        result = 31 * result + (userId != null ? userId.hashCode() : 0);
         result = 31 * result + (quantity != null ? quantity.hashCode() : 0);
         result = 31 * result + (date != null ? date.hashCode() : 0);
         result = 31 * result + (number != null ? number.hashCode() : 0);
