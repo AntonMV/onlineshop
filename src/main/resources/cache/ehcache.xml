@@ -4,15 +4,15 @@
          updateCheck="false">
 
     <defaultCache
-            maxElementsInMemory="500"
+            maxElementsInMemory="1000"
             overflowToDisk="false"
             memoryStoreEvictionPolicy="LFU"
             eternal="true" />
 
-    <cache name="FlushModel" maxElementsInMemory="1" eternal="true"
-           overflowToDisk="false" memoryStoreEvictionPolicy="LFU"/>
-
-    <cache name="CacheModel" maxElementsInMemory="1" eternal="true"
-           overflowToDisk="false" memoryStoreEvictionPolicy="LFU"/>
+    <cache name="CacheModel"
+           maxElementsInMemory="500"
+           eternal="true"
+           overflowToDisk="false"
+           memoryStoreEvictionPolicy="LFU"/>
 
 </ehcache>

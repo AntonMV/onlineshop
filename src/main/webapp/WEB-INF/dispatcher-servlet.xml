@@ -22,11 +22,14 @@
     <!--Поддержка аннатаций кеширования @Cacheable и @CacheEvict cache-manager="cacheManager" -->
     <ehcache:annotation-driven />
 
-    <bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager"
-          p:cache-manager-ref="ehcache" />
-    <!-- Ehcache library setup -->
-    <bean id="ehcache" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean"
-          p:config-location="classpath:cache/ehcache.xml" p:shared="true" />
+    <bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager">
+        <property name="cacheManager" ref="ehcache"/>
+    </bean>
+
+    <bean id="ehcache" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+        <property name="configLocation" value="classpath:cache/ehcache.xml"/>
+        <property name="shared" value="true"/>
+    </bean>
 
 
     <!--Поддержка аннотаций @Transaction transaction-manager="transactionManager"-->

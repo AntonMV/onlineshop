@@ -18,13 +18,13 @@ public class ProductServiceImpl implements ProductService {
     private ProductRepository productRepository;
 
     @Transactional
-    @CacheEvict(value="FlushModel")
+    @CacheEvict(value="CacheModel")
     public Product addBank(Product product) {
         return productRepository.saveAndFlush(product);
     }
 
     @Transactional
-    @CacheEvict(value="FlushModel")
+    @CacheEvict(value="CacheModel")
     public void delete(Integer id) {
         productRepository.delete(id);
     }
@@ -35,7 +35,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Transactional
-    @CacheEvict(value="FlushModel")
+    @CacheEvict(value="CacheModel")
     public Product editBank(Product product) {
         return productRepository.saveAndFlush(product);
     }
