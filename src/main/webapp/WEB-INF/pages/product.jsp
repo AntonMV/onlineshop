@@ -1,7 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
-<%@ page session="false" %>
 
 <html>
 <head>
@@ -46,7 +45,9 @@
     </style>
 </head>
 <body>
-    <h1>Product Details</h1>
+    <h1>Product Details ${Hello}</h1>
+
+
     <table class="tg">
         <tr>
             <th width="80">ID</th>
@@ -58,11 +59,11 @@
         <c:if test="${!empty allProduct}">
         <c:forEach var="product" items="${allProduct}">
             <tr>
-                <td>${newProduct.id}</td>
-                <td>${newProduct.description}</td>
-                <td>${newProduct.name}</td>
-                <td>${newProduct.price}</td>
-                <td>${newProduct.quantity}</td>
+                <td>${product.id}</td>
+                <td>${product.description}</td>
+                <td>${product.name}</td>
+                <td>${product.price}</td>
+                <td>${product.quantity}</td>
             </tr>
         </c:forEach>
         </c:if>

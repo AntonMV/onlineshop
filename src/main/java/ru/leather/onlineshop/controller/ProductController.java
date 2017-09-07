@@ -17,14 +17,14 @@ public class ProductController {
 
     @Autowired
     @Qualifier(value = "productServiceImpl")
-    public void setUserService(ProductService productService) {
+    public void setProductService(ProductService productService) {
         this.productService = productService;
     }
 
     @RequestMapping(value = "/product")
-    public String listUsers(Map<String, Object> model){
-        model.put("newProduct", new Product());
+    public String listProduct(Map<String, Object> model){
         model.put("allProduct", productService.getAll());
+        model.put("Hello","Hello Anton");
         return "product";
     }
 }
