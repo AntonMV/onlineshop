@@ -2,19 +2,35 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:jpa="http://www.springframework.org/schema/data/jpa" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:ehcache="http://www.springframework.org/schema/cache" xmlns:p="http://www.springframework.org/schema/p"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/context
        http://www.springframework.org/schema/context/spring-context.xsd
        http://www.springframework.org/schema/data/jpa
-       http://www.springframework.org/schema/data/jpa/spring-jpa.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+       http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd
+       http://www.springframework.org/schema/cache
+       http://www.springframework.org/schema/cache/spring-cache.xsd">
 
     <!--Поддержка автоматического связывания посредством аннотаций, но необходимо создавать бины для компонентов отдельно-->
     <!--<context:annotation-config/>-->
 
-    <!--Поддержка аннотаций @Transaction -->
-    <tx:annotation-driven transaction-manager="transactionManager"/>
+    <!--Поддержка аннатаций кеширования @Cacheable и @CacheEvict cache-manager="cacheManager" -->
+    <ehcache:annotation-driven />
+
+    <bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager"
+          p:cache-manager-ref="ehcache" />
+    <!-- Ehcache library setup -->
+    <bean id="ehcache" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean"
+          p:config-location="classpath:cache/ehcache.xml" p:shared="true" />
+
+
+    <!--Поддержка аннотаций @Transaction transaction-manager="transactionManager"-->
+    <tx:annotation-driven/>
 
     <!--Поиск представления через арбитр по шаблону-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -35,7 +51,7 @@
     <bean id="emf" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="dataSource" ref="dataSource" />
         <property name="jpaVendorAdapter" ref="jpaVendorAdapter" />
-        <property name="packagesToScan" value="ru.leather.onlineshop"/>
+        <property name="packagesToScan" value="ru.leather.onlineshop.model"/>
     </bean>
 
     <bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
@@ -56,6 +72,4 @@
     <!--Нужен для хранения абстрактного интерфейса репозетария JPA -->
     <jpa:repositories base-package="ru.leather.onlineshop.repository" entity-manager-factory-ref="emf"
                       transaction-manager-ref="transactionManager"/>
-
-
 </beans>

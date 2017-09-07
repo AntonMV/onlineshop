@@ -52,6 +52,11 @@
       <groupId>org.springframework.data</groupId>
       <artifactId>spring-data-jpa</artifactId>
     </dependency>
+    <!-- Support for Ehcache and others -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context-support</artifactId>
+    </dependency>
     <!-- Hibernate -->
     <dependency>
       <groupId>org.hibernate</groupId>

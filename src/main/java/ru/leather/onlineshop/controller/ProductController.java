@@ -13,13 +13,14 @@ import java.util.Map;
 @Controller
 public class ProductController {
 
+    @Autowired
     private ProductService productService;
 
-    @Autowired
-    @Qualifier(value = "productServiceImpl")
-    public void setProductService(ProductService productService) {
-        this.productService = productService;
-    }
+//    @Autowired
+//    @Qualifier(value = "productServiceImpl")
+//    public void setProductService(ProductService productService) {
+//        this.productService = productService;
+//    }
 
     @RequestMapping(value = "/product")
     public String listProduct(Map<String, Object> model){
