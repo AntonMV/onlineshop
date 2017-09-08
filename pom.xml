@@ -15,6 +15,8 @@
     <spring-framework-version>4.3.10.RELEASE</spring-framework-version>
     <spring-data-version>Hopper-SR11</spring-data-version>
     <ehcache.version>2.10.4</ehcache.version>
+    <logback.version>1.2.3</logback.version>
+    <slf4j.version>1.7.25</slf4j.version>
   </properties>
 
   <dependencyManagement>
@@ -47,6 +49,12 @@
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-context</artifactId>
+      <exclusions>
+        <exclusion>
+          <groupId>commons-logging</groupId>
+          <artifactId>commons-logging</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <!-- Spring Data JPA -->
     <dependency>
@@ -80,6 +88,17 @@
       <artifactId>junit</artifactId>
       <version>3.8.1</version>
       <scope>test</scope>
+    </dependency>
+    <!---Loging-->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>jcl-over-slf4j</artifactId>
+      <version>${slf4j.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+      <version>${logback.version}</version>
     </dependency>
     <!-- Jstl-->
     <dependency>
