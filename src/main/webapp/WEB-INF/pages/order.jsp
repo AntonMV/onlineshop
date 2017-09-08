@@ -13,6 +13,7 @@
         <td>${order.id}</td>
         <td>${order.productId}</td>
         <td>${order.quantity}</td>
+        <td>${order.purdate}</td>
     </tr>
 </c:forEach>
 </body>

@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
+@Table(name = "user", schema = "onshope", catalog = "")
 public class User {
     private int id;
     private String name;
@@ -13,7 +14,6 @@ public class User {
     private Byte enable;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     public int getId() {
         return id;
@@ -78,14 +78,14 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        User user = (User) o;
+        User that = (User) o;
 
-        if (id != user.id) return false;
-        if (name != null ? !name.equals(user.name) : user.name != null) return false;
-        if (email != null ? !email.equals(user.email) : user.email != null) return false;
-        if (password != null ? !password.equals(user.password) : user.password != null) return false;
-        if (registered != null ? !registered.equals(user.registered) : user.registered != null) return false;
-        if (enable != null ? !enable.equals(user.enable) : user.enable != null) return false;
+        if (id != that.id) return false;
+        if (name != null ? !name.equals(that.name) : that.name != null) return false;
+        if (email != null ? !email.equals(that.email) : that.email != null) return false;
+        if (password != null ? !password.equals(that.password) : that.password != null) return false;
+        if (registered != null ? !registered.equals(that.registered) : that.registered != null) return false;
+        if (enable != null ? !enable.equals(that.enable) : that.enable != null) return false;
 
         return true;
     }
