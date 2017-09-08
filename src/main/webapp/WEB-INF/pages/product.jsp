@@ -7,7 +7,7 @@
 <head>
     <title>Product</title>
     <link rel="stylesheet" href="webjars/bootstrap/3.3.7-1/css/bootstrap.min.css">
-    <script type="text/javascript" src="webjars/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="webjars/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="webjars/bootstrap/3.3.7-1/js/bootstrap.min.js" defer></script>
 </head>
 <body>
