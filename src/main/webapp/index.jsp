@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="resources/favicon.ico">
 
-    <title>Justified Nav Template for Bootstrap</title>
+    <title>CORIUM Lether working</title>
 
     <!-- Bootstrap core CSS -->
     <link href="webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" rel="stylesheet">
@@ -40,7 +40,7 @@
     <!-- The justified navigation menu is meant for single line per list item.
          Multiple lines will require custom code not provided by Bootstrap. -->
     <div class="masthead">
-        <h3 class="text-muted">Project name</h3>
+        <h3 class="text-muted"><img style = "height: 75px;" class="img-responsive" src="resources/img/logo.svg"/></h3>
         <nav>
             <ul class="nav nav-justified">
                 <li class="active"><a href="#" data-toggle="tab" title="Tooltip">Home</a></li>
