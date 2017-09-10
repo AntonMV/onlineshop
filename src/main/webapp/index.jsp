@@ -36,11 +36,22 @@
 <body>
 
 <div class="container">
-
     <!-- The justified navigation menu is meant for single line per list item.
          Multiple lines will require custom code not provided by Bootstrap. -->
     <div class="masthead">
-        <h3 class="text-muted"><img style = "height: 75px;" class="img-responsive" src="resources/img/logo.svg"/></h3>
+            <div class="row" style="padding: 20px">
+                <div class="col-md-3" >
+                    <span class="align-bottom"><img class="img-responsive" src="resources/img/logo.svg"/></span>
+                </div>
+                <div class="col-md-5" style="margin-top: 30px" >
+                        <span class="align-bottom"><div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search for...">
+                            <span class="input-group-btn">
+                             <button class="btn btn-secondary" type="button">Go!</button>
+                            </span>
+                        </div></span>
+                </div>
+            </div>
         <nav>
             <ul class="nav nav-justified">
                 <li class="active"><a href="#" data-toggle="tab" title="Tooltip">Home</a></li>
