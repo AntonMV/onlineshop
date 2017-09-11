@@ -15,7 +15,9 @@
        http://www.springframework.org/schema/tx
        http://www.springframework.org/schema/tx/spring-tx.xsd
        http://www.springframework.org/schema/cache
-       http://www.springframework.org/schema/cache/spring-cache.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+       http://www.springframework.org/schema/cache/spring-cache.xsd
+       http://www.springframework.org/schema/mvc
+       http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
     <!--Поддержка автоматического связывания посредством аннотаций, но необходимо создавать бины для компонентов отдельно-->
     <!--<context:annotation-config/>-->
@@ -89,6 +91,5 @@
     <!--Нужен для хранения абстрактного интерфейса репозетария JPA -->
     <jpa:repositories base-package="ru.leather.onlineshop.repository" entity-manager-factory-ref="emf"
                       transaction-manager-ref="transactionManager"/>
-
 
 </beans>

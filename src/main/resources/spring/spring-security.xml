@@ -1,0 +1,40 @@
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+             xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/security
+	http://www.springframework.org/schema/security/spring-security.xsd">
+
+
+    <http>
+        <access-denied-handler error-page="/error403.jsp"/>
+        <intercept-url pattern="/index*" access="permitAll"/>
+        <intercept-url pattern="/register" access="permitAll"/>
+        <intercept-url pattern="/login" access="permitAll"/>
+        <intercept-url pattern="/product" access="permitAll"/>
+
+        <intercept-url pattern="/**/admin/**" access="hasRole('ROLE_ADMIN')"/>
+        <intercept-url pattern="/*" access="isAuthenticated()"/>
+
+        <form-login login-page="/login.jsp"
+                    default-target-url="/index" authentication-failure-url="/login.jsp?error=true"/>
+
+        <form-login login-page="/login" default-target-url="/index"
+                    authentication-failure-url="/login?error=true"
+                    login-processing-url="/spring_security_check"/>
+        <logout logout-success-url="/login"/>
+
+        <remember-me/>
+    </http>
+
+    <authentication-manager>
+        <authentication-provider>
+            <user-service>
+                <user name="admin@bk.ru" password="pass" authorities="ROLE_ADMIN,ROLE_USER"/>
+                <user name="user1@bk.ru" password="1111" authorities="ROLE_USER"/>
+                <user name="user2@bk.ru" password="2222" disabled="true" authorities="ROLE_USER"/>
+            </user-service>
+        </authentication-provider>
+    </authentication-manager>
+</beans:beans>

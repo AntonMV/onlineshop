@@ -52,12 +52,12 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-home"></span></a>
+                    <a class="navbar-brand" href="${pagecontext.request.contextpath}/"><span class="glyphicon glyphicon-home"></span></a>
                 </div>
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+                        <li class="active"><a href="${pagecontext.request.contextpath}/product">Products <span class="sr-only">(current)</span></a></li>
                         <li><a href="#">Link</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
@@ -90,7 +90,7 @@
                                 <li><a href="#">Separated link</a></li>
                             </ul>
                         </li>
-                        <button type="button" class="btn btn-default navbar-btn " style="margin-left: 15px">Sign in</button>
+                        <button onClick='location.href="${pagecontext.request.contextpath}/login"' type="button" class="btn btn-default navbar-btn " style="margin-left: 15px">Sign in</button>
                     </div>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->

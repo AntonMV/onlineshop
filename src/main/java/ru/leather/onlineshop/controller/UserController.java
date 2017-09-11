@@ -18,4 +18,9 @@ public class UserController {
         model.put("allUsers", userService.getAll());
         return "users";
     }
+
+    @RequestMapping(value = "/login")
+    public String login() {
+        return "login";
+    }
 }
