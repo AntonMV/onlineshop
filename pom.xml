@@ -14,6 +14,7 @@
     <mysql.version>5.1.34</mysql.version>
     <spring-framework-version>4.3.10.RELEASE</spring-framework-version>
     <spring-data-version>Hopper-SR11</spring-data-version>
+    <spring-security-version>4.2.3.RELEASE</spring-security-version>
     <ehcache.version>2.10.4</ehcache.version>
     <logback.version>1.2.3</logback.version>
     <slf4j.version>1.7.25</slf4j.version>
@@ -72,6 +73,22 @@
       <groupId>net.sf.ehcache</groupId>
       <artifactId>ehcache</artifactId>
       <version>${ehcache.version}</version>
+    </dependency>
+    <!-- Spring Security -->
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-core</artifactId>
+      <version>${spring-security-version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-web</artifactId>
+      <version>${spring-security-version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-config</artifactId>
+      <version>${spring-security-version}</version>
     </dependency>
     <!-- Hibernate -->
     <dependency>
