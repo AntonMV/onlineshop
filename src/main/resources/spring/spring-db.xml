@@ -13,14 +13,6 @@
     <!--Поддержка аннотаций @Transaction transaction-manager="transactionManager"-->
     <tx:annotation-driven/>
 
-    <!--Поиск представления через арбитр по шаблону-->
-    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
-        <property name="prefix" value="/WEB-INF/pages/"/>
-        <property name="suffix" value=".jsp"/>
-    </bean>
-
-
     <!--Обеспечивает работу с транзакциями в Spring -->
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
         <property name="entityManagerFactory" ref="emf"/>
