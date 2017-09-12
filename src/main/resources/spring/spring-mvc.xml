@@ -10,20 +10,17 @@
        http://www.springframework.org/schema/mvc
        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-    <!--Поддержка аннотаций JSR-303 для проверки данных, преобразования сообщений и форматирования полей-->
+    <!--Указывает, что для описания сущностей MVC будут использоваться аннотации-->
     <mvc:annotation-driven />
+
+    <!--Указывает на пакеты, в которых будет происходить сканирование на наличие аннотаций-->
+    <context:component-scan base-package="ru.leather.onlineshop*" />
 
     <!--  all resources inside folder src/main/webapp/resources are mapped so they can be referred to inside JSP files -->
     <mvc:resources mapping="/resources/**" location="/resources/"/>
 
     <!-- uses WebJars so Javascript and CSS libs can be declared as Maven dependencies (Bootstrap, jQuery...) -->
     <mvc:resources mapping="/webjars/**" location="/webjars/"/>
-
-    <!--Поддержка автоматического связывания посредством аннотаций, но необходимо создавать бины для компонентов отдельно-->
-    <!--<context:annotation-config/>-->
-
-    <!--Поддержка автоматического связывания и создания компонентов на основе аннотаций-->
-    <context:component-scan base-package="ru.leather.onlineshop*" />
 
 
     <!--Поиск представления через арбитр по шаблону-->
