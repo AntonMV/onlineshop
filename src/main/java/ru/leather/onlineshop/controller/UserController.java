@@ -13,6 +13,11 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @RequestMapping(value = {"/" , "/index"})
+    public String Home() {
+        return "index";
+    }
+
     @RequestMapping(value = "/users")
     public String listProduct(Map<String, Object> model){
         model.put("allUsers", userService.getAll());
