@@ -115,7 +115,8 @@
                     <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"/>
                 </div>
                 <div class="checkbox">
-                        <input type="checkbox"/> Check me out
+                    <label>
+                        <input name ="remember-me" type="checkbox"/> Check me out
                     </label>
                 </div>
                 <button type="submit" class="btn btn-default">Submit</button>

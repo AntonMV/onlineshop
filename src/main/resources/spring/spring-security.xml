@@ -51,10 +51,13 @@
         <!--<csrf disabled="true"/>-->
         <intercept-url pattern="/product" access="hasRole('ROLE_USER')" />
         <form-login login-page="/login"
+                    username-parameter="username"
+                    password-parameter="password"
                     default-target-url="/product"
                     authentication-failure-url="/login?error=true"
                     login-processing-url="/spring_security_check"/>
 
+        <remember-me remember-me-parameter="remember-me"/>
         <logout logout-success-url="/" invalidate-session="true"  />
 
     </http>
