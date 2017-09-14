@@ -12,7 +12,7 @@
 
     <link rel="icon" href="/resources/favicon.ico">
 
-    <%--<title><spring:message code="label.title"/></title>--%>
+    <title><spring:message code="label.title"/></title>
 
     <base href="${pageContext.request.contextPath}/"/>
     <!-- Bootstrap core CSS -->

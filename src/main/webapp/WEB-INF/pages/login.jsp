@@ -79,23 +79,9 @@
     </div>
 
     <!-- Site footer -->
-    <footer class="footer">
-        <p>&copy; 2017 Company, Inc.</p>
-    </footer>
-
-</div> <!-- /container -->
+    <jsp:include page="frame/footer.jsp"/>
 
 
-<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<script src="resources/js/ie10-viewport-bug-workaround.js"></script>
-<script>
-    $(function () {
-        $('[data-toggle="tab"]').tooltip()
-        $('.nav li').click(function() {
-            $(this).siblings('li').removeClass('active');
-            $(this).addClass('active');
-        });
-    })
-</script>
+</div>
 </body>
 </html>
