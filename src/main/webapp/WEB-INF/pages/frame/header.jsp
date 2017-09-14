@@ -27,7 +27,9 @@ Multiple lines will require custom code not provided by Bootstrap. -->
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="/product">Products <span class="sr-only">(current)</span></a></li>
                     <li><a href="/order">Order</a></li>
+                    <sec:authorize access="hasRole('ROLE_ADMIN')">
                     <li><a href="/users">Users</a></li>
+                    </sec:authorize>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
                         <ul class="dropdown-menu">
