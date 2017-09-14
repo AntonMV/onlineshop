@@ -100,7 +100,11 @@
                             <button onClick='location.href="/login"' type="button" class="btn btn-default navbar-btn " style="margin-left: 15px">Sign in</button>
                         </sec:authorize>
                         <sec:authorize access="isAuthenticated()">
-                            <button onClick='location.href="/logout"' type="button" class="btn btn-default navbar-btn " style="margin-left: 15px">Logout</button>
+
+                            <form:form action="/logout" id="logout" method="post">
+                                <button onClick="document.getElementById('logout').submit();" type="button" class="btn btn-default navbar-btn " style="margin-left: 15px">Logout</button>
+                            </form:form>
+
                         </sec:authorize>
                     </div>
                 </div><!-- /.navbar-collapse -->
