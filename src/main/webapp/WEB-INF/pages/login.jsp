@@ -120,11 +120,16 @@
                 </div>
                 <button type="submit" class="btn btn-default">Submit</button>
             </form:form>
-            <c:if test="${param.error}">
-                <div class="error">
-                        ${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
-                </div>
-            </c:if>
+            <div style="padding: 10px;">
+                <c:if test="${param.error}">
+                    <div class="error">
+                            ${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
+                    </div>
+                </c:if>
+                <c:if test="${param.logout}">
+                    You have been logged out.
+                </c:if>
+            </div>
         </div>
     </div>
 

@@ -1,4 +1,10 @@
 <!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -90,7 +96,12 @@
                                 <li><a href="#">Separated link</a></li>
                             </ul>
                         </li>
-                        <button onClick='location.href="${pagecontext.request.contextpath}/login"' type="button" class="btn btn-default navbar-btn " style="margin-left: 15px">Sign in</button>
+                        <sec:authorize access="!isAuthenticated()">
+                            <button onClick='location.href="/login"' type="button" class="btn btn-default navbar-btn " style="margin-left: 15px">Sign in</button>
+                        </sec:authorize>
+                        <sec:authorize access="isAuthenticated()">
+                            <button onClick='location.href="/logout"' type="button" class="btn btn-default navbar-btn " style="margin-left: 15px">Logout</button>
+                        </sec:authorize>
                     </div>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
