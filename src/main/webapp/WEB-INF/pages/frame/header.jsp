@@ -52,10 +52,10 @@ Multiple lines will require custom code not provided by Bootstrap. -->
                 <div class="nav navbar-nav navbar-right">
                     <li><a class="navbar-brand" href="#"><span style="font-size: 25px; line-height: 0.8;" class="glyphicon glyphicon-shopping-cart"><span class="badge">0</span></span></a></li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Language <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
+                            <li><a href="?lang=ru">Russian</a></li>
+                            <li><a href="?lang=en">English</a></li>
                             <li><a href="#">Something else here</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="#">Separated link</a></li>
