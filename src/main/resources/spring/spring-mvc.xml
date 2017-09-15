@@ -31,16 +31,18 @@
     </bean>
 
     <!--Настройка интернационализации/локализации-->
+    <!--необходим для настройки файла с текстом на разных языках-->
     <bean name="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
         <property name="basename" value="lable" />
         <property name="fallbackToSystemLocale" value="false"/>
         <property name="defaultEncoding" value="UTF-8"/>
     </bean>
-
+    <!--необходим для определения локали приложения-->
     <bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
         <property name="defaultLocale" value="ru"/>
     </bean>
 
+    <!--перехватчик локали в приложении -->
     <mvc:interceptors>
         <bean id="localeChangeInterceptor" class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
             <property name="paramName" value="lang"/>

@@ -58,7 +58,10 @@
                     authentication-failure-url="/login?error=true"
                     login-processing-url="/spring_security_check"/>
 
-        <remember-me remember-me-parameter="remember-me"/>
+        <!--Save logged user in cookie with name key='name' -->
+        <remember-me remember-me-parameter="remember-me"
+                     key= "myKey"
+                     token-validity-seconds= "300"/>
         <logout logout-success-url="/" invalidate-session="true"  />
 
     </http>
