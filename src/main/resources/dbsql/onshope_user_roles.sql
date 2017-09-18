@@ -18,20 +18,20 @@ USE `onshope`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `product`
+-- Table structure for table `user_roles`
 --
 
-DROP TABLE IF EXISTS `product`;
+DROP TABLE IF EXISTS `user_roles`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `product` (
-  `id` int(11) NOT NULL,
-  `name` varchar(45) DEFAULT NULL,
-  `description` varchar(45) DEFAULT NULL,
-  `quantity` int(11) DEFAULT NULL,
-  `price` double DEFAULT NULL,
-  `delivery` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+CREATE TABLE `user_roles` (
+  `role_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `role` varchar(45) NOT NULL,
+  PRIMARY KEY (`role_id`),
+  UNIQUE KEY `user_roles_role_uindex` (`role`),
+  KEY `user_roles_user_id_fk` (`user_id`),
+  CONSTRAINT `user_roles_user_id_fk` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -44,4 +44,4 @@ CREATE TABLE `product` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-09-18 12:38:44
+-- Dump completed on 2017-09-18 12:44:58
