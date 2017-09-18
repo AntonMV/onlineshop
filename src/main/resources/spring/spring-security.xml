@@ -66,13 +66,27 @@
 
     </http>
 
-    <authentication-manager>
-        <authentication-provider>
-            <user-service>
-                <user name="admin@bk.ru" password="0" authorities="ROLE_ADMIN,ROLE_USER"/>
-                <user name="user1@bk.ru" password="1111" authorities="ROLE_USER"/>
-                <user name="user2@bk.ru" password="2222" disabled="true" authorities="ROLE_USER"/>
-            </user-service>
+    <!--<authentication-manager>-->
+        <!--<authentication-provider>-->
+            <!--<user-service>-->
+                <!--<user name="admin@bk.ru" password="0" authorities="ROLE_ADMIN,ROLE_USER"/>-->
+                <!--<user name="user1@bk.ru" password="1111" authorities="ROLE_USER"/>-->
+                <!--<user name="user2@bk.ru" password="2222" disabled="true" authorities="ROLE_USER"/>-->
+            <!--</user-service>-->
+        <!--</authentication-provider>-->
+    <!--</authentication-manager>-->
+
+    <beans:bean id="userDetailsServiceImpl"
+                class="ru.leather.onlineshop.service.UserDetailsServiceImpl"/>
+
+    <beans:bean id="passwordEncoder"
+                class="org.springframework.security.authentication.encoding.Md5PasswordEncoder"/>
+
+    <authentication-manager alias="authenticationManager">
+        <authentication-provider user-service-ref="userDetailsServiceImpl">
+            <password-encoder ref="passwordEncoder"/>
         </authentication-provider>
     </authentication-manager>
+
+
 </beans:beans>
