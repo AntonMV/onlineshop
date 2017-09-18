@@ -2,6 +2,8 @@ package ru.leather.onlineshop.model;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Collection;
+import java.util.Set;
 
 @Entity
 @Table(name = "user", schema = "onshope", catalog = "")
@@ -11,7 +13,8 @@ public class User {
     private String email;
     private String password;
     private Timestamp registered;
-    private Byte enable;
+    private Boolean enable;
+    private Set<UserRoles> userRoles;
 
     @Id
     @GeneratedValue( strategy= GenerationType.AUTO )
@@ -66,12 +69,23 @@ public class User {
 
     @Basic
     @Column(name = "enable")
-    public Byte getEnable() {
-        return enable;
+    public Boolean getEnable() {
+        return true;
     }
 
-    public void setEnable(Byte enable) {
+    public void setEnable(Boolean enable) {
         this.enable = enable;
+    }
+
+    @ManyToMany
+    @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    public Set<UserRoles> getUserRoles() {
+        return userRoles;
+    }
+
+    public void setUserRoles(Set<UserRoles> userRoles) {
+        this.userRoles = userRoles;
     }
 
     @Override

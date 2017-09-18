@@ -10,7 +10,7 @@ public interface UserService {
 
     void deleteUser(Integer id);
 
-    User getByNameUser(String name);
+    User getByNameUser(String email);
 
     User editUser(User user);
 

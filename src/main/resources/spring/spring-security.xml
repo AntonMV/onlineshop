@@ -79,12 +79,12 @@
     <beans:bean id="userDetailsServiceImpl"
                 class="ru.leather.onlineshop.service.UserDetailsServiceImpl"/>
 
-    <beans:bean id="passwordEncoder"
-                class="org.springframework.security.authentication.encoding.Md5PasswordEncoder"/>
+    <!--<beans:bean id="passwordEncoder"-->
+                <!--class="org.springframework.security.authentication.encoding.Md5PasswordEncoder"/>-->
 
     <authentication-manager alias="authenticationManager">
         <authentication-provider user-service-ref="userDetailsServiceImpl">
-            <password-encoder ref="passwordEncoder"/>
+            <!--<password-encoder ref="passwordEncoder"/>-->
         </authentication-provider>
     </authentication-manager>
 
