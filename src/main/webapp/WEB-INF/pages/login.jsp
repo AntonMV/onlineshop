@@ -58,12 +58,19 @@
                     <label for="exampleInputPassword1">Password</label>
                     <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"/>
                 </div>
-                <div class="checkbox">
-                    <label>
-                        <input name ="remember-me" type="checkbox"/> Check me out
-                    </label>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <div class="checkbox">
+                            <label>
+                                <input name ="remember-me" type="checkbox"/> Check me out
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <a style="text-decoration: none;" href="/registration">Зарегистрироваться!</a>
+                    </div>
                 </div>
-                <button type="submit" class="btn btn-default">Submit</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
             </form:form>
             <div style="padding: 10px;">
                 <c:if test="${param.error}">

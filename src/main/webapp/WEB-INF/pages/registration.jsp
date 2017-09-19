@@ -48,33 +48,50 @@
 
     <!-- Form registartion -->
     <div class="row">
-        <div class="center-block" style="width: 30%">
-            <form:form action="/spring_security_check" method="post" >
+        <div class="col-md-6 col-md-offset-3">
+
+            <form:form method="POST" modelAttribute="userForm" data-toggle="validator" role="form">
+                <spring:bind path="name">
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input name="username" type="email" class="form-control" id="exampleInputEmail1" placeholder="Email"/>
+                    <label for="inputName" class="control-label">Ваше имя</label>
+                    <input type="text" class="form-control" id="inputName" placeholder="Введите Ваше имя" required>
                 </div>
+                </spring:bind>
+                <spring:bind path="email">
                 <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"/>
+                    <label for="inputEmail" class="control-label">Ваш E-mail</label>
+                    <input type="email" class="form-control" id="inputEmail" placeholder="Email" data-error="Вы не правильно ввели Ваш E-mail" required>
+                    <div class="help-block with-errors"></div>
                 </div>
-                <div class="checkbox">
-                    <label>
-                        <input name ="remember-me" type="checkbox"/> Check me out
-                    </label>
-                </div>
-                <button type="submit" class="btn btn-default">Submit</button>
-            </form:form>
-            <div style="padding: 10px;">
-                <c:if test="${param.error}">
-                    <div class="error">
-                            ${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
+                </spring:bind>
+                <div class="form-group">
+                    <label for="inputPassword" class="control-label">Введите пароль</label>
+                    <div class="form-inline row">
+                        <spring:bind path="password">
+                        <div class="form-group col-sm-6">
+                            <input type="password" data-toggle="validator" data-minlength="8" class="form-control" id="inputPassword" placeholder="Enter you password" required>
+                            <span class="help-block">Минимум 6 значений</span>
+                        </div>
+                        </spring:bind>
+                        <div class="form-group col-sm-6">
+                            <input type="password" class="form-control" id="inputPasswordConfirm" data-match="#inputPassword" data-match-error="Ошибка! Пароли не совпадают!" placeholder="Повторите пароль" required>
+                            <div class="help-block with-errors"></div>
+                        </div>
                     </div>
-                </c:if>
-                <c:if test="${param.logout}">
-                    You have been logged out.
-                </c:if>
-            </div>
+                </div>
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" id="terms" data-error="Прежде чем оправить данные" required>
+                            Докажите что Вы человек
+                        </label>
+                        <div class="help-block with-errors"></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Отправить</button>
+                </div>
+            </form:form>
         </div>
     </div>
 
