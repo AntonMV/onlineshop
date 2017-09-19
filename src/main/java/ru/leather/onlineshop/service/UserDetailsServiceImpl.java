@@ -10,8 +10,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ru.leather.onlineshop.model.Roles;
 import ru.leather.onlineshop.model.User;
-import ru.leather.onlineshop.model.UserRoles;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,9 +39,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     private List<GrantedAuthority> getGrantedAuthorities(User user){
         List<GrantedAuthority> authorities = new ArrayList<>();
 
-        for (UserRoles userRoles : user.getUserRoles()) {
-            logger.info("UserRoles : {}", userRoles);
-            authorities.add(new SimpleGrantedAuthority(userRoles.getRole()));
+        for (Roles role : user.getRoles()) {
+            logger.info("UserRoles : {}", role);
+            authorities.add(new SimpleGrantedAuthority(role.getName()));
         }
 
         logger.info("authorities : {}", authorities);

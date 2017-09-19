@@ -5,16 +5,32 @@ import javax.persistence.*;
 @Entity
 @Table(name = "product", schema = "onshope", catalog = "")
 public class Product {
-    private int id;
-    private String name;
-    private String description;
-    private Integer quantity;
-    private Double price;
-    private String delivery;
 
     @Id
     @GeneratedValue( strategy= GenerationType.AUTO )
     @Column(name = "id")
+    private int id;
+
+    @Basic
+    @Column(name = "name")
+    private String name;
+
+    @Basic
+    @Column(name = "description")
+    private String description;
+
+    @Basic
+    @Column(name = "quantity")
+    private Integer quantity;
+
+    @Basic
+    @Column(name = "price")
+    private Double price;
+
+    @Basic
+    @Column(name = "delivery")
+    private String delivery;
+
     public int getId() {
         return id;
     }
@@ -23,8 +39,6 @@ public class Product {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "name")
     public String getName() {
         return name;
     }
@@ -33,8 +47,6 @@ public class Product {
         this.name = name;
     }
 
-    @Basic
-    @Column(name = "description")
     public String getDescription() {
         return description;
     }
@@ -43,8 +55,6 @@ public class Product {
         this.description = description;
     }
 
-    @Basic
-    @Column(name = "quantity")
     public Integer getQuantity() {
         return quantity;
     }
@@ -53,8 +63,6 @@ public class Product {
         this.quantity = quantity;
     }
 
-    @Basic
-    @Column(name = "price")
     public Double getPrice() {
         return price;
     }
@@ -63,8 +71,6 @@ public class Product {
         this.price = price;
     }
 
-    @Basic
-    @Column(name = "delivery")
     public String getDelivery() {
         return delivery;
     }

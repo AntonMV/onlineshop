@@ -6,15 +6,28 @@ import java.sql.Timestamp;
 @Entity
 @Table(name = "orrder", schema = "onshope", catalog = "")
 public class Orrder {
-    private int id;
-    private Integer userId;
-    private Integer productId;
-    private Integer quantity;
-    private Timestamp purdate;
 
     @Id
     @GeneratedValue( strategy= GenerationType.AUTO )
     @Column(name = "id")
+    private int id;
+
+    @Basic
+    @Column(name = "userId")
+    private Integer userId;
+
+    @Basic
+    @Column(name = "productId")
+    private Integer productId;
+
+    @Basic
+    @Column(name = "quantity")
+    private Integer quantity;
+
+    @Basic
+    @Column(name = "purdate")
+    private Timestamp purdate;
+
     public int getId() {
         return id;
     }
@@ -23,8 +36,6 @@ public class Orrder {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "userId")
     public Integer getUserId() {
         return userId;
     }
@@ -33,8 +44,6 @@ public class Orrder {
         this.userId = userId;
     }
 
-    @Basic
-    @Column(name = "productId")
     public Integer getProductId() {
         return productId;
     }
@@ -43,8 +52,6 @@ public class Orrder {
         this.productId = productId;
     }
 
-    @Basic
-    @Column(name = "quantity")
     public Integer getQuantity() {
         return quantity;
     }
@@ -53,8 +60,6 @@ public class Orrder {
         this.quantity = quantity;
     }
 
-    @Basic
-    @Column(name = "purdate")
     public Timestamp getPurdate() {
         return purdate;
     }

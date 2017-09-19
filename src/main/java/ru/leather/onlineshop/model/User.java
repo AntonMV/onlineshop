@@ -8,17 +8,35 @@ import java.util.Set;
 @Entity
 @Table(name = "user", schema = "onshope", catalog = "")
 public class User {
-    private int id;
-    private String name;
-    private String email;
-    private String password;
-    private Timestamp registered;
-    private Boolean enable;
-    private Set<UserRoles> userRoles;
-
     @Id
-    @GeneratedValue( strategy= GenerationType.AUTO )
     @Column(name = "id")
+    private int id;
+
+    @Basic
+    @Column(name = "name")
+    private String name;
+
+    @Basic
+    @Column(name = "email")
+    private String email;
+
+    @Basic
+    @Column(name = "password")
+    private String password;
+
+    @Basic
+    @Column(name = "registered")
+    private Timestamp registered;
+
+    @Basic
+    @Column(name = "enable")
+    private Boolean enable;
+
+    @ManyToMany
+    @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Roles> roles;
+
     public int getId() {
         return id;
     }
@@ -27,8 +45,6 @@ public class User {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "name")
     public String getName() {
         return name;
     }
@@ -37,8 +53,6 @@ public class User {
         this.name = name;
     }
 
-    @Basic
-    @Column(name = "email")
     public String getEmail() {
         return email;
     }
@@ -47,8 +61,6 @@ public class User {
         this.email = email;
     }
 
-    @Basic
-    @Column(name = "password")
     public String getPassword() {
         return password;
     }
@@ -57,8 +69,6 @@ public class User {
         this.password = password;
     }
 
-    @Basic
-    @Column(name = "registered")
     public Timestamp getRegistered() {
         return registered;
     }
@@ -67,8 +77,6 @@ public class User {
         this.registered = registered;
     }
 
-    @Basic
-    @Column(name = "enable")
     public Boolean getEnable() {
         return true;
     }
@@ -77,15 +85,12 @@ public class User {
         this.enable = enable;
     }
 
-    @ManyToMany
-    @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id"))
-    public Set<UserRoles> getUserRoles() {
-        return userRoles;
+    public Set<Roles> getRoles() {
+        return roles;
     }
 
-    public void setUserRoles(Set<UserRoles> userRoles) {
-        this.userRoles = userRoles;
+    public void setRoles(Set<Roles> userRoles) {
+        this.roles = roles;
     }
 
     @Override
