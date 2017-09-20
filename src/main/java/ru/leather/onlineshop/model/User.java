@@ -3,12 +3,15 @@ package ru.leather.onlineshop.model;
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Collection;
+import java.util.List;
 import java.util.Set;
 
 @Entity
 @Table(name = "user", schema = "onshope", catalog = "")
 public class User {
+
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
@@ -35,7 +38,7 @@ public class User {
     @ManyToMany
     @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Set<Roles> roles;
+    private List<Roles> roles;
 
     public int getId() {
         return id;
@@ -85,11 +88,11 @@ public class User {
         this.enable = enable;
     }
 
-    public Set<Roles> getRoles() {
+    public List<Roles> getRoles() {
         return roles;
     }
 
-    public void setRoles(Set<Roles> userRoles) {
+    public void setRoles(List<Roles> roles) {
         this.roles = roles;
     }
 

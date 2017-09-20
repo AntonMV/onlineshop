@@ -1,18 +1,26 @@
 package ru.leather.onlineshop.service;
 
+import ch.qos.logback.classic.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.leather.onlineshop.model.Roles;
 import ru.leather.onlineshop.model.User;
 import ru.leather.onlineshop.repository.RolesRepository;
 import ru.leather.onlineshop.repository.UserRepository;
 
-import java.util.HashSet;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
+
 
 @Service
 public class UserServiceImpl implements UserService {
+
+    static final Logger logger = (Logger) LoggerFactory.getLogger(UserDetailsServiceImpl.class);
+
 
     @Autowired
     private UserRepository userRepository;
@@ -21,10 +29,18 @@ public class UserServiceImpl implements UserService {
     private RolesRepository rolesRepository;
 
     @Override
+    @Transactional
     public User addUser(User user) {
-        Set<Roles> roles = new HashSet<>();
-        roles.add(rolesRepository.getOne(2));
+        List<Roles> roles = new ArrayList<>();
+        LocalDateTime localtime = LocalDateTime.now();
+        Timestamp localtimestamp = Timestamp.valueOf(localtime);
+
+        user.setRegistered(localtimestamp);
+        roles.add(rolesRepository.findOne(2));
         user.setRoles(roles);
+            logger.info("Roles to add default: ", roles.get(0));
+        user.setEnable(true);
+            logger.info("User field: ", user.toString());
         return userRepository.saveAndFlush(user);
     }
 

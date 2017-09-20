@@ -44,7 +44,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             authorities.add(new SimpleGrantedAuthority(role.getName()));
         }
 
-        logger.info("authorities : {}", authorities);
+        logger.debug("authorities : {}", authorities);
         return authorities;
     }
 }

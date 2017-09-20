@@ -10,8 +10,7 @@
 
   <properties>
     <java.version>1.8</java.version>
-    <!--<hibernate.version>5.2.10.Final</hibernate.version>-->
-    <hibernate.version>5.2.10.Final</hibernate.version>
+    <hibernate.version>5.2.11.Final</hibernate.version>
     <mysql.version>5.1.34</mysql.version>
     <spring-framework-version>4.3.10.RELEASE</spring-framework-version>
     <spring-data-version>Hopper-SR11</spring-data-version>
