@@ -55,13 +55,18 @@
                 <div class="form-group">
                     <label for="inputName" class="control-label">Ваше имя</label>
                     <form:input path="name" type="text" class="form-control" id="inputName" placeholder="Введите Ваше имя"></form:input>
+                    <div class="help-block with-errors">
+                        <span class="error"><form:errors path="name" /></span>
+                    </div>
                 </div>
                 </spring:bind>
                 <spring:bind path="email">
                 <div class="form-group">
                     <label for="inputEmail" class="control-label">Ваш E-mail</label>
                     <form:input path="email" type="email" class="form-control" id="inputEmail" placeholder="Email" data-error="Вы не правильно ввели Ваш E-mail"></form:input>
-                    <div class="help-block with-errors"></div>
+                    <div class="help-block with-errors">
+                        <span class="error"><form:errors path="email" /></span>
+                    </div>
                 </div>
                 </spring:bind>
                 <div class="form-group">
@@ -70,7 +75,10 @@
                         <spring:bind path="password">
                         <div class="form-group col-sm-6">
                             <form:input path="password" type="password" data-toggle="validator" data-minlength="8" class="form-control" id="inputPassword" placeholder="Enter you password"></form:input>
-                            <span class="help-block">Минимум 6 значений</span>
+                            <div class="help-block with-errors">
+                                <span class="error"><form:errors path="password" /></span>
+                            </div>
+                            <span class="help-block">Минимум 8 значений</span>
                         </div>
                         </spring:bind>
                         <div class="form-group col-sm-6">

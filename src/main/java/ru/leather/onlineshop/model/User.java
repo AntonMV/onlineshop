@@ -1,10 +1,11 @@
 package ru.leather.onlineshop.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.sql.Timestamp;
-import java.util.Collection;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "user", schema = "onshope", catalog = "")
@@ -16,14 +17,17 @@ public class User {
     private int id;
 
     @Basic
+    @NotBlank
     @Column(name = "name")
     private String name;
 
     @Basic
+    @Email
     @Column(name = "email")
     private String email;
 
     @Basic
+    @Size(min=8, max=30)
     @Column(name = "password")
     private String password;
 
