@@ -58,19 +58,22 @@
                     <label for="exampleInputPassword1">Password</label>
                     <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"/>
                 </div>
-                <div class="row">
-                    <div class="col-xs-6">
-                        <div class="checkbox">
-                            <label>
-                                <input name ="remember-me" type="checkbox"/> Check me out
-                            </label>
+                <div class="form-group" style="margin-bottom: 15px; display: inline-table; width: 100%">
+                    <div style="display: table-row;">
+                        <div style="text-align: left; display: table-cell; width: 50%;">
+                            <div class="checkbox">
+                                <label>
+                                    <input name ="remember-me" type="checkbox"/> Check me out
+                                </label>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-xs-6">
-                        <a style="text-decoration: none;" href="/registration">Зарегистрироваться!</a>
+                        <div style="text-align: right; display: table-cell; width: 50%;">
+                            <a style="text-decoration: none;" href="/registration">Зарегистрироваться!</a>
+                        </div>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
             </form:form>
             <div style="padding: 10px;">
                 <c:if test="${param.error}">
