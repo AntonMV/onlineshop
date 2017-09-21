@@ -6,6 +6,7 @@
 
 <!-- The justified navigation menu is meant for single line per list item.
 Multiple lines will require custom code not provided by Bootstrap. -->
+
 <div class="masthead">
     <div class="row">
         <div class="col-md-4"></div>
@@ -47,12 +48,13 @@ Multiple lines will require custom code not provided by Bootstrap. -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="/product">Products <span class="sr-only">(current)</span></a></li>
-                    <li><a href="/order">Order</a></li>
-                    <sec:authorize access="hasRole('ROLE_ADMIN')">
-                    <li><a href="/users">Users</a></li>
+                    <sec:authorize access="hasRole('ROLE_USER')">
+                    <li><a href="/users">User profile</a></li>
+                    <li><a href="/order">History of orders</a></li>
                     </sec:authorize>
+                    <sec:authorize access="hasRole('ROLE_ADMIN')">
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin panel <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="#">Action</a></li>
                             <li><a href="#">Another action</a></li>
@@ -63,6 +65,7 @@ Multiple lines will require custom code not provided by Bootstrap. -->
                             <li><a href="#">One more separated link</a></li>
                         </ul>
                     </li>
+                    </sec:authorize>
                 </ul>
                 <form class="navbar-form navbar-left">
                     <div class="form-group">
@@ -87,10 +90,22 @@ Multiple lines will require custom code not provided by Bootstrap. -->
                     </sec:authorize>
                     <sec:authorize access="isAuthenticated()">
                         <button onClick="document.getElementById('logout').submit();" type="button" class="btn btn-default navbar-btn " style="margin-left: 15px">Logout</button>
-                        <form:form action="/logout" id="logout" method="post"/>
+                        <form:form style="display:none;" action="/logout" id="logout" method="post" />
                     </sec:authorize>
                 </div>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
     </nav>
 </div>
+<script>
+//    $(function () {
+//        $('.nav li').click(function() {
+//            $(this).siblings('li').removeClass('active');
+//            $(this).addClass('active');
+//        });
+//    });
+    $('.nav li').click(function () {
+        $('.nav li').removeClass('active');
+        $(this).addClass('active');
+    });
+</script>
