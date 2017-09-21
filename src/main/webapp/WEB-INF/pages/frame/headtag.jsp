@@ -36,6 +36,7 @@
     <script type="text/javascript" src="/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js" defer></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="/resources/js/ie10-viewport-bug-workaround.js"></script>
-
+    <!--Custom scripts-->
+    <script src="/resources/js/scripts.js"></script>
 
 </head>

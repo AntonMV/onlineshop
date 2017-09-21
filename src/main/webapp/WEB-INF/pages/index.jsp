@@ -9,7 +9,11 @@
 <body>
 <div class="container">
     <!-- Site header -->
-    <jsp:include page="frame/header.jsp"/>
+    <jsp:include page="frame/header.jsp" />
+
+    <div id ="navigation">
+
+    </div>
 
     <!-- Jumbotron -->
     <div class="jumbotron">

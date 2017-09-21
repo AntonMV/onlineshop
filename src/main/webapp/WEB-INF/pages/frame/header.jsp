@@ -47,7 +47,7 @@ Multiple lines will require custom code not provided by Bootstrap. -->
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="/product">Products <span class="sr-only">(current)</span></a></li>
+                    <li><a href="/product">Products <span class="sr-only">(current)</span></a></li>
                     <sec:authorize access="hasRole('ROLE_USER')">
                     <li><a href="/users">User profile</a></li>
                     <li><a href="/order">History of orders</a></li>
@@ -97,15 +97,3 @@ Multiple lines will require custom code not provided by Bootstrap. -->
         </div><!-- /.container-fluid -->
     </nav>
 </div>
-<script>
-//    $(function () {
-//        $('.nav li').click(function() {
-//            $(this).siblings('li').removeClass('active');
-//            $(this).addClass('active');
-//        });
-//    });
-    $('.nav li').click(function () {
-        $('.nav li').removeClass('active');
-        $(this).addClass('active');
-    });
-</script>

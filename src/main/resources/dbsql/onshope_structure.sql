@@ -1,24 +1,6 @@
 CREATE DATABASE  IF NOT EXISTS `onshope`
 USE `onshope`;
 
---
--- Table structure for table `user_roles`
---
-
-DROP TABLE IF EXISTS `user_roles`;
-
-CREATE TABLE `user_roles` (
-  `user_id` int(11) NOT NULL,
-  `role_id` int(11) NOT NULL,
-  UNIQUE KEY `uniq_user_roles` (`user_id`,`role_id`),
-  KEY `user_roles_roles_id_fk` (`role_id`),
-  CONSTRAINT `user_roles_roles_id_fk` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`),
-  CONSTRAINT `user_roles_user_id_fk` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Table structure for table `user`
---
 
 DROP TABLE IF EXISTS `user`;
 
@@ -44,6 +26,8 @@ CREATE TABLE `roles` (
   `name` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+
 
 --
 -- Table structure for table `product`
