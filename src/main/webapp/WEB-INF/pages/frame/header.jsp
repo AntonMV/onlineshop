@@ -23,8 +23,10 @@ Multiple lines will require custom code not provided by Bootstrap. -->
                     </c:if>
                 </c:if>
                 <c:if test= "${isUser}">
+                    <sec:authentication property= "principal.username" var="prinName"/>
+
                     <p class="text-right"><spring:message code="label.logwelcome"/>
-                        <sec:authentication property= "principal.username"/><spring:message code="label.logrole"/>
+                        ${prinName}<spring:message code="label.logrole"/>
                         <b><sec:authentication property= "principal.authorities"/></b>
                     </p>
                 </c:if>
@@ -49,7 +51,7 @@ Multiple lines will require custom code not provided by Bootstrap. -->
                 <ul class="nav navbar-nav">
                     <li><a href="/product">Products <span class="sr-only">(current)</span></a></li>
                     <sec:authorize access="hasRole('ROLE_USER')">
-                    <li><a href="/users">User profile</a></li>
+                    <li><a href="/users/${prinName}">User profile</a></li>
                     <li><a href="/order">History of orders</a></li>
                     </sec:authorize>
                     <sec:authorize access="hasRole('ROLE_ADMIN')">

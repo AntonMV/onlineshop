@@ -11,8 +11,6 @@
     <!-- Site header -->
     <jsp:include page="frame/header.jsp"/>
 
-    <sec:authentication property = "principal.username" var ="isUser"/>
-
     <div id="main">
         <div class="row" id="real-estates-detail">
             <div class="col-lg-4 col-md-4 col-xs-12">
@@ -30,11 +28,7 @@
                         <div class="text-center" id="author">
                             <img src="resources/img/myprofile.jpg">
                             <h3>
-                            <c:forEach var="user" items="${allUsers}">
-                                <c:if test= "${isUser == user.email}">
-                                    ${user.name}
-                                </c:if>
-                            </c:forEach>
+                            ${objUser.name}
                             </h3>
                             <small class="label label-warning">Российская Федерация</small>
                             <p class="sosmed-author">

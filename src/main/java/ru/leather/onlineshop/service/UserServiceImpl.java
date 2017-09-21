@@ -17,6 +17,7 @@ import java.util.List;
 
 
 @Service
+@Transactional
 public class UserServiceImpl implements UserService {
 
     static final Logger logger = (Logger) LoggerFactory.getLogger(UserDetailsServiceImpl.class);
@@ -29,7 +30,6 @@ public class UserServiceImpl implements UserService {
     private RolesRepository rolesRepository;
 
     @Override
-    @Transactional
     public User addUser(User user) {
         List<Roles> roles = new ArrayList<>();
         LocalDateTime localtime = LocalDateTime.now();

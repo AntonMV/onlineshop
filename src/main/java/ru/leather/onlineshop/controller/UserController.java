@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import ru.leather.onlineshop.model.User;
@@ -26,9 +27,15 @@ public class UserController {
     }
 
 
-    @RequestMapping(value = "/users", method = RequestMethod.GET)
-    public String listProduct(Map<String, Object> model){
-        model.put("allUsers", userService.getAll());
+//    @RequestMapping(value = "/users", method = RequestMethod.GET)
+//    public String listProduct(Map<String, Object> model){
+//        model.put("allUsers", userService.getAll());
+//        return "users";
+//    }
+
+    @RequestMapping(value = "/users/{name}", method = RequestMethod.GET)
+    public String findUser(@PathVariable("name") String name, Model model){
+        model.addAttribute("objUser", userService.getByNameUser(name));
         return "users";
     }
 
