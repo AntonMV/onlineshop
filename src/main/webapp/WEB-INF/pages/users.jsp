@@ -27,9 +27,7 @@
                     <div class="panel-body">
                         <div class="text-center" id="author">
                             <img src="resources/img/myprofile.jpg">
-                            <h3>
-                            ${objUser.name}
-                            </h3>
+                            <h3>${objUser.name}</h3>
                             <small class="label label-warning">Российская Федерация</small>
                             <p class="sosmed-author">
                                 <a href="#"><i class="fa fa-facebook" title="Facebook"></i></a>
@@ -55,12 +53,7 @@
                                 <table class="table table-th-block">
                                     <tbody>
                                     <tr><td class="active">Зарегистрирован:</td>
-                                            <td><c:forEach var="user" items="${allUsers}">
-                                                <c:if test= "${isUser == user.email}">
-                                                    ${user.registered}
-                                                </c:if>
-                                                </c:forEach>
-                                            </td></tr>
+                                            <td>${objUser.registered}</td></tr>
                                     <tr><td class="active">Страна:</td><td>Россия</td></tr>
                                     <tr><td class="active">Пол:</td><td>Мужской</td></tr>
                                     <tr><td class="active">Полных лет:</td><td>31</td></tr>

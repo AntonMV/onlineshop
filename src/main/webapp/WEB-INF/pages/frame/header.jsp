@@ -51,7 +51,7 @@ Multiple lines will require custom code not provided by Bootstrap. -->
                 <ul class="nav navbar-nav">
                     <li><a href="/product">Products <span class="sr-only">(current)</span></a></li>
                     <sec:authorize access="hasRole('ROLE_USER')">
-                    <li><a href="/users/${prinName}">User profile</a></li>
+                    <li><a href="/users?name=${prinName}">User profile</a></li>
                     <li><a href="/order">History of orders</a></li>
                     </sec:authorize>
                     <sec:authorize access="hasRole('ROLE_ADMIN')">

@@ -5,14 +5,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import ru.leather.onlineshop.model.User;
 import ru.leather.onlineshop.service.UserService;
 
-import java.util.Map;
 
 @Controller
 public class UserController {
@@ -27,14 +23,8 @@ public class UserController {
     }
 
 
-//    @RequestMapping(value = "/users", method = RequestMethod.GET)
-//    public String listProduct(Map<String, Object> model){
-//        model.put("allUsers", userService.getAll());
-//        return "users";
-//    }
-
-    @RequestMapping(value = "/users/{name}", method = RequestMethod.GET)
-    public String findUser(@PathVariable("name") String name, Model model){
+    @RequestMapping(value = "/users", method = RequestMethod.GET)
+    public String findUser(@RequestParam("name") String name, Model model){
         model.addAttribute("objUser", userService.getByNameUser(name));
         return "users";
     }
