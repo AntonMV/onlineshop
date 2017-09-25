@@ -23,10 +23,8 @@ Multiple lines will require custom code not provided by Bootstrap. -->
                     </c:if>
                 </c:if>
                 <c:if test= "${isUser}">
-                    <sec:authentication property = "principal" var="principal"/>
-
                     <p class="text-right"><spring:message code="label.logwelcome"/>
-                        ${prinName}<spring:message code="label.logrole"/>
+                        <sec:authentication property = "principal.username"/><spring:message code="label.logrole"/>
                         <b><sec:authentication property= "principal.authorities"/></b>
                     </p>
                 </c:if>
