@@ -10,8 +10,7 @@ import ru.leather.onlineshop.model.User;
 import ru.leather.onlineshop.repository.RolesRepository;
 import ru.leather.onlineshop.repository.UserRepository;
 
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,18 +29,19 @@ public class UserServiceImpl implements UserService {
     private RolesRepository rolesRepository;
 
     @Override
-    public User addUser(User user) {
+    public void addUser(User user) {
         List<Roles> roles = new ArrayList<>();
-        LocalDateTime localtime = LocalDateTime.now();
-        Timestamp localtimestamp = Timestamp.valueOf(localtime);
 
-        user.setRegistered(localtimestamp);
+        user.setRegistered(LocalDate.now());
+
         roles.add(rolesRepository.findOne(2));
+
         user.setRoles(roles);
             logger.info("Roles to add default: ", roles.get(0));
         user.setEnable(true);
             logger.info("User field: ", user.toString());
-        return userRepository.saveAndFlush(user);
+
+        userRepository.saveAndFlush(user);
     }
 
     @Override
@@ -55,8 +55,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User editUser(User user) {
-        return userRepository.saveAndFlush(user);
+    public void editUser(User user) {
+         userRepository.updateEmail(user);
     }
 
     @Override

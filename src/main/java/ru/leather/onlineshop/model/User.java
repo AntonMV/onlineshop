@@ -1,10 +1,10 @@
 package ru.leather.onlineshop.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
-import java.sql.Timestamp;
+import javax.validation.constraints.*;
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -32,14 +32,32 @@ public class User {
     private String password;
 
     @Basic
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "registered")
-    private Timestamp registered;
+    private LocalDate registered;
 
     @Basic
     @Column(name = "enable")
     private Boolean enable;
 
-    @ManyToMany
+    @Basic
+    @Size(max = 20)
+    @Pattern(regexp="^((8|\\+7)[\\- ]?)?(\\(?\\d{3}\\)?[\\- ]?)?[\\d\\- ]{7,10}$")
+    @Column(name = "phone")
+    private String phone;
+
+    @Basic
+    @Size(max = 100)
+    @Column(name = "address")
+    private String address;
+
+    @Basic
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Column(name = "birthday")
+    private LocalDate birthday;
+
+
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private List<Roles> roles;
@@ -76,11 +94,11 @@ public class User {
         this.password = password;
     }
 
-    public Timestamp getRegistered() {
+    public LocalDate getRegistered() {
         return registered;
     }
 
-    public void setRegistered(Timestamp registered) {
+    public void setRegistered(LocalDate registered) {
         this.registered = registered;
     }
 
@@ -100,6 +118,30 @@ public class User {
         this.roles = roles;
     }
 
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public LocalDate getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(LocalDate birthday) {
+        this.birthday = birthday;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -113,6 +155,9 @@ public class User {
         if (password != null ? !password.equals(that.password) : that.password != null) return false;
         if (registered != null ? !registered.equals(that.registered) : that.registered != null) return false;
         if (enable != null ? !enable.equals(that.enable) : that.enable != null) return false;
+        if (phone != null ? !phone.equals(that.phone) : that.phone != null) return false;
+        if (address != null ? !address.equals(that.address) : that.address != null) return false;
+        if (birthday != null ? !birthday.equals(that.birthday) : that.birthday != null) return false;
 
         return true;
     }
@@ -125,6 +170,9 @@ public class User {
         result = 31 * result + (password != null ? password.hashCode() : 0);
         result = 31 * result + (registered != null ? registered.hashCode() : 0);
         result = 31 * result + (enable != null ? enable.hashCode() : 0);
+        result = 31 * result + (phone != null ? phone.hashCode() : 0);
+        result = 31 * result + (address != null ? address.hashCode() : 0);
+        result = 31 * result + (birthday != null ? birthday.hashCode() : 0);
         return result;
     }
 }

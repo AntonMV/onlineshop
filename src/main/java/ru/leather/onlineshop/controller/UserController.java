@@ -1,7 +1,6 @@
 package ru.leather.onlineshop.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -24,20 +23,7 @@ public class UserController {
     public String Home() {
         return "index";
     }
-    
 
-    @RequestMapping(value = "/users", method = RequestMethod.GET)
-    public String findUser(Model model){
-        
-        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        String email = null;
-        if (principal instanceof UserDetails) {
-            email = ((UserDetails)principal).getUsername();
-        }
-        
-        model.addAttribute("objUser", userService.getByNameUser(email));
-        return "users";
-    }
     
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
@@ -53,11 +39,39 @@ public class UserController {
     }
 
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
-    public String registration(@ModelAttribute("userForm")@Validated User userForm , BindingResult bindingResult) {
+    public String registration(@ModelAttribute("userForm")@Validated User userForm, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "registration";
         }
         userService.addUser(userForm);
         return "redirect:/index";
+    }
+
+    @RequestMapping(value = "/users", method = RequestMethod.GET)
+    public String findUser(Model model){
+
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String email = null;
+        if (principal instanceof UserDetails) {
+            email = ((UserDetails)principal).getUsername();
+        }
+
+        model.addAttribute("objUser", userService.getByNameUser(email));
+        return "users";
+    }
+
+    @RequestMapping(value = "/users", method = RequestMethod.POST)
+    public String editUser(@ModelAttribute("objUser") @Validated User objUser, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "users";
+        }
+        User user = userService.getByNameUser(objUser.getEmail());
+        objUser.setId(objUser.getId());
+        objUser.setPassword(user.getPassword());
+        objUser.setRoles(user.getRoles());
+        objUser.setEnable(user.getEnable());
+        objUser.setRegistered(user.getRegistered());
+        userService.editUser(objUser);
+        return "redirect:/users";
     }
 }
