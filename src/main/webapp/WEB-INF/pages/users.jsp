@@ -1,5 +1,5 @@
 <html>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
@@ -65,6 +65,11 @@
                             <div class="tab-pane fade" id="contact">
                                 <p></p>
                                 <form:form method="POST" modelAttribute="objUser" data-toggle="validator" role="form">
+                                    <spring:bind path="id">
+                                        <div class="form-group">
+                                            <form:input  id="inputName" path="id" type = "hidden"></form:input>
+                                        </div>
+                                    </spring:bind>
                                     <spring:bind path="name">
                                         <div class="form-group">
                                             <label for="inputName" class="control-label">Ваше имя</label>
@@ -73,15 +78,6 @@
                                                 <span class="error"><form:errors path="name" /></span>
                                             </div>
                                         </div>
-                                    </spring:bind>
-                                    <spring:bind path="email">
-                                    <div class="form-group">
-                                        <label for="inputEmail" class="control-label">E-mail адрес</label>
-                                        <form:input id="inputEmail" path="email" type="email" class="form-control rounded" placeholder="Ваш Е-майл"></form:input>
-                                        <div class="help-block with-errors">
-                                            <span class="error"><form:errors path="email" /></span>
-                                        </div>
-                                    </div>
                                     </spring:bind>
                                     <spring:bind path="birthday">
                                         <div class="form-group">

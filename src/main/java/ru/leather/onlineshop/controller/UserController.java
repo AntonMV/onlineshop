@@ -55,7 +55,6 @@ public class UserController {
         if (principal instanceof UserDetails) {
             email = ((UserDetails)principal).getUsername();
         }
-
         model.addAttribute("objUser", userService.getByNameUser(email));
         return "users";
     }
@@ -65,12 +64,6 @@ public class UserController {
         if (bindingResult.hasErrors()) {
             return "users";
         }
-        User user = userService.getByNameUser(objUser.getEmail());
-        objUser.setId(objUser.getId());
-        objUser.setPassword(user.getPassword());
-        objUser.setRoles(user.getRoles());
-        objUser.setEnable(user.getEnable());
-        objUser.setRegistered(user.getRegistered());
         userService.editUser(objUser);
         return "redirect:/users";
     }

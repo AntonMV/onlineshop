@@ -10,6 +10,8 @@ import ru.leather.onlineshop.model.User;
 import ru.leather.onlineshop.repository.RolesRepository;
 import ru.leather.onlineshop.repository.UserRepository;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +23,8 @@ public class UserServiceImpl implements UserService {
 
     static final Logger logger = (Logger) LoggerFactory.getLogger(UserDetailsServiceImpl.class);
 
+//    @PersistenceContext
+//    private EntityManager em;
 
     @Autowired
     private UserRepository userRepository;
@@ -56,8 +60,19 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void editUser(User user) {
-         userRepository.updateEmail(user);
+        userRepository.updateEmail(user.getId(),user.getName(), user.getAddress(),
+                                   user.getPhone(),user.getBirthday());
     }
+
+//    @Override
+//    public void editUser(User user) {
+//        if (Integer.valueOf(user.getId()) == null) {
+//            userRepository.save(user);
+//            em.persist(user);
+//        } else {
+//            em.merge(user);
+//        }
+//    }
 
     @Override
     public List<User> getAll() {
