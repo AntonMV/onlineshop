@@ -2,19 +2,24 @@ CREATE DATABASE  IF NOT EXISTS `onshope`;
 USE `onshope`;
 
 
+--
+-- Table structure for table `user`
+--
+
 DROP TABLE IF EXISTS `user`;
 
 CREATE TABLE `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) NOT NULL,
   `email` varchar(45) NOT NULL,
   `password` varchar(45) NOT NULL,
   `registered` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `enable` tinyint(1) NOT NULL DEFAULT '1',
+  `contact_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `user_email_uindex` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
-
+  UNIQUE KEY `user_email_uindex` (`email`),
+  KEY `user_contacts_id_fk` (`contact_id`),
+  CONSTRAINT `user_contacts_id_fk` FOREIGN KEY (`contact_id`) REFERENCES `contacts` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8;
 --
 -- Table structure for table `roles`
 --
@@ -73,4 +78,19 @@ CREATE TABLE `orrder` (
   `purdate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+--
+-- Table structure for table `contacts`
+--
+
+DROP TABLE IF EXISTS `contacts`;
+
+CREATE TABLE `contacts` (
+  `id` int(11) NOT NULL,
+  `name` varchar(45) DEFAULT NULL,
+  `address` varchar(100) DEFAULT NULL,
+  `phone` varchar(20) DEFAULT NULL,
+  `birthday` date DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

@@ -28,7 +28,7 @@
                     <div class="panel-body">
                         <div class="text-center" id="author">
                             <img src="resources/img/myprofile.jpg">
-                            <h3>${objUser.name}</h3>
+                            <h3>${objUser.contact.name}</h3>
                             <small class="label label-warning">Российская Федерация</small>
                             <p class="sosmed-author">
                                 <a href="#"><i class="fa fa-facebook" title="Facebook"></i></a>
@@ -53,12 +53,12 @@
                             <div class="tab-pane fade active in" id="detail">
                                 <table class="table table-th-block">
                                     <tbody>
-                                    <tr><td class="active">Имя</td><td>${objUser.name}</td></tr>
+                                    <tr><td class="active">Имя</td><td>${objUser.contact.name}</td></tr>
                                     <tr><td class="active">Email:</td><td>${objUser.email}</td></tr>
                                     <tr><td class="active">Зарегистрирован:</td><td>${objUser.registered}</td></tr>
-                                    <tr><td class="active">День рождения:</td><td>${objUser.birthday}</td></tr>
-                                    <tr><td class="active">Телефон:</td><td>${objUser.phone}</td></tr>
-                                    <tr><td class="active">Адрес:</td><td>${objUser.address}</td></tr>
+                                    <tr><td class="active">День рождения:</td><td>${objUser.contact.birthday}</td></tr>
+                                    <tr><td class="active">Телефон:</td><td>${objUser.contact.phone}</td></tr>
+                                    <tr><td class="active">Адрес:</td><td>${objUser.contact.address}</td></tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -67,42 +67,42 @@
                                 <form:form method="POST" modelAttribute="objUser" data-toggle="validator" role="form">
                                     <spring:bind path="id">
                                         <div class="form-group">
-                                            <form:input  id="inputName" path="id" type = "hidden"></form:input>
+                                            <form:input path="id" type = "hidden"></form:input>
                                         </div>
                                     </spring:bind>
-                                    <spring:bind path="name">
+                                    <spring:bind path="contact.name">
                                         <div class="form-group">
                                             <label for="inputName" class="control-label">Ваше имя</label>
-                                            <form:input  id="inputName" path="name" type="text" class="form-control rounded" placeholder="Ваше имя"></form:input>
+                                            <form:input  id="inputName" path="contact.name" type="text" class="form-control rounded" placeholder="Ваше имя"></form:input>
                                             <div class="help-block with-errors">
-                                                <span class="error"><form:errors path="name" /></span>
+                                                <span class="error"><form:errors path="contact.name" /></span>
                                             </div>
                                         </div>
                                     </spring:bind>
-                                    <spring:bind path="birthday">
+                                    <spring:bind path="contact.birthday">
                                         <div class="form-group">
                                             <label for="inputBirthday" class="control-label">День рождения</label>
-                                            <form:input id="inputBirthday" data-date-format="DD.MM.YYYY" path="birthday" value="${objUser.birthday}" type="Date" class="form-control rounded" placeholder="Ваш день рождения"></form:input>
+                                            <form:input id="inputBirthday" data-date-format="DD.MM.YYYY" path="contact.birthday" value="${objUser.contact.birthday}" type="Date" class="form-control rounded" placeholder="Ваш день рождения"></form:input>
                                             <div class="help-block with-errors">
-                                                <span class="error"><form:errors path="birthday" /></span>
+                                                <span class="error"><form:errors path="contact.birthday" /></span>
                                             </div>
                                         </div>
                                     </spring:bind>
-                                    <spring:bind path="phone">
+                                    <spring:bind path="contact.phone">
                                         <div class="form-group">
                                             <label for="inputPhone" class="control-label">Ваш телефон</label>
-                                            <form:input id="inputPhone" path="phone" type="text" class="form-control rounded" placeholder="+7-900-123-45-67"></form:input>
+                                            <form:input id="inputPhone" path="contact.phone" type="text" class="form-control rounded" placeholder="+7-900-123-45-67"></form:input>
                                             <div class="help-block with-errors">
-                                                <span class="error"><form:errors path="phone" /></span>
+                                                <span class="error"><form:errors path="contact.phone" /></span>
                                             </div>
                                         </div>
                                     </spring:bind>
-                                    <spring:bind path="address">
+                                    <spring:bind path="contact.address">
                                         <div class="form-group">
                                             <label for="inputAddress" class="control-label">Ваш адрес</label>
-                                            <form:input id="inputAddress" path="address" type="text" class="form-control rounded" placeholder="Ваш адрес"></form:input>
+                                            <form:input id="inputAddress" path="contact.address" type="text" class="form-control rounded" placeholder="Ваш адрес"></form:input>
                                             <div class="help-block with-errors">
-                                                <span class="error"><form:errors path="address" /></span>
+                                                <span class="error"><form:errors path="contact.address" /></span>
                                             </div>
                                         </div>
                                     </spring:bind>

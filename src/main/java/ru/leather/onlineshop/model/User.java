@@ -17,11 +17,6 @@ public class User {
     private int id;
 
     @Basic
-    @NotBlank
-    @Column(name = "name")
-    private String name;
-
-    @Basic
     @Email
     @Column(name = "email")
     private String email;
@@ -40,22 +35,9 @@ public class User {
     @Column(name = "enable")
     private Boolean enable;
 
-    @Basic
-    @Size(max = 20)
-    @Pattern(regexp="^((8|\\+7)[\\- ]?)?(\\(?\\d{3}\\)?[\\- ]?)?[\\d\\- ]{7,10}$")
-    @Column(name = "phone")
-    private String phone;
-
-    @Basic
-    @Size(max = 100)
-    @Column(name = "address")
-    private String address;
-
-    @Basic
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @Column(name = "birthday")
-    private LocalDate birthday;
-
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "contact_id")
+    private Contacts contact;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"),
@@ -68,14 +50,6 @@ public class User {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getEmail() {
@@ -118,28 +92,12 @@ public class User {
         this.roles = roles;
     }
 
-    public String getPhone() {
-        return phone;
+    public Contacts getContact() {
+        return contact;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public LocalDate getBirthday() {
-        return birthday;
-    }
-
-    public void setBirthday(LocalDate birthday) {
-        this.birthday = birthday;
+    public void setContact(Contacts contact) {
+        this.contact = contact;
     }
 
     @Override
@@ -150,14 +108,10 @@ public class User {
         User that = (User) o;
 
         if (id != that.id) return false;
-        if (name != null ? !name.equals(that.name) : that.name != null) return false;
         if (email != null ? !email.equals(that.email) : that.email != null) return false;
         if (password != null ? !password.equals(that.password) : that.password != null) return false;
         if (registered != null ? !registered.equals(that.registered) : that.registered != null) return false;
         if (enable != null ? !enable.equals(that.enable) : that.enable != null) return false;
-        if (phone != null ? !phone.equals(that.phone) : that.phone != null) return false;
-        if (address != null ? !address.equals(that.address) : that.address != null) return false;
-        if (birthday != null ? !birthday.equals(that.birthday) : that.birthday != null) return false;
 
         return true;
     }
@@ -165,14 +119,11 @@ public class User {
     @Override
     public int hashCode() {
         int result = id;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (email != null ? email.hashCode() : 0);
         result = 31 * result + (password != null ? password.hashCode() : 0);
         result = 31 * result + (registered != null ? registered.hashCode() : 0);
         result = 31 * result + (enable != null ? enable.hashCode() : 0);
-        result = 31 * result + (phone != null ? phone.hashCode() : 0);
-        result = 31 * result + (address != null ? address.hashCode() : 0);
-        result = 31 * result + (birthday != null ? birthday.hashCode() : 0);
+
         return result;
     }
 }

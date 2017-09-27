@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ru.leather.onlineshop.model.Contacts;
 import ru.leather.onlineshop.model.Roles;
 import ru.leather.onlineshop.model.User;
 import ru.leather.onlineshop.repository.RolesRepository;
@@ -18,7 +19,6 @@ import java.util.List;
 
 
 @Service
-@Transactional
 public class UserServiceImpl implements UserService {
 
     static final Logger logger = (Logger) LoggerFactory.getLogger(UserDetailsServiceImpl.class);
@@ -31,6 +31,7 @@ public class UserServiceImpl implements UserService {
     private RolesRepository rolesRepository;
 
     @Override
+    @Transactional
     public void addUser(User user) {
         List<Roles> roles = new ArrayList<>();
 
@@ -57,18 +58,22 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public void editUser(User user) {
 
-        userRepository.updateEmail(user.getId(),user.getName(), user.getAddress(),
-                                   user.getPhone(),user.getBirthday());
+//        userRepository.updateEmail(user.getId(),user.getContact().getName(), user.getContact().getAddress(),
+//                       user.getContact().getPhone(),user.getContact().getBirthday());
 
-//          User userup = userRepository.getOne(user.getId());
-//          userup.setName(user.getName());
-//          userup.setAddress(user.getAddress());
-//          userup.setPhone(user.getPhone());
-//          userup.setBirthday(user.getBirthday());
-//
-//          userRepository.save(userup);
+          User userup = userRepository.findOne(user.getId());
+          Contacts contacts = user.getContact();
+          contacts.setName(user.getContact().getName());
+          contacts.setAddress(user.getContact().getAddress());
+          contacts.setPhone(user.getContact().getPhone());
+          contacts.setBirthday(user.getContact().getBirthday());
+          userup.setContact(contacts);
+
+
+          userRepository.save(userup);
     }
 
     @Override
