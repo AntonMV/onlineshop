@@ -23,8 +23,6 @@ public class UserServiceImpl implements UserService {
 
     static final Logger logger = (Logger) LoggerFactory.getLogger(UserDetailsServiceImpl.class);
 
-//    @PersistenceContext
-//    private EntityManager em;
 
     @Autowired
     private UserRepository userRepository;
@@ -60,19 +58,18 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void editUser(User user) {
+
         userRepository.updateEmail(user.getId(),user.getName(), user.getAddress(),
                                    user.getPhone(),user.getBirthday());
-    }
 
-//    @Override
-//    public void editUser(User user) {
-//        if (Integer.valueOf(user.getId()) == null) {
-//            userRepository.save(user);
-//            em.persist(user);
-//        } else {
-//            em.merge(user);
-//        }
-//    }
+//          User userup = userRepository.getOne(user.getId());
+//          userup.setName(user.getName());
+//          userup.setAddress(user.getAddress());
+//          userup.setPhone(user.getPhone());
+//          userup.setBirthday(user.getBirthday());
+//
+//          userRepository.save(userup);
+    }
 
     @Override
     public List<User> getAll() {
