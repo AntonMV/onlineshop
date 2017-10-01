@@ -3,12 +3,28 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:jpa="http://www.springframework.org/schema/data/jpa"
        xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/data/jpa
        http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
        http://www.springframework.org/schema/tx
-       http://www.springframework.org/schema/tx/spring-tx.xsd">
+       http://www.springframework.org/schema/tx/spring-tx.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/jdbc
+       http://www.springframework.org/schema/jdbc/spring-jdbc.xsd">
+
+    <!--Механизм подстановки переменных-заполнителей из файла properties-->
+    <context:property-placeholder
+            location="classpath:db/db.properties" />
+
+    <!--Инициализации базы данных первоночальными скриптами-->
+    <jdbc:initialize-database data-source="dataSource" enabled="${database.init}">
+        <jdbc:script encoding="utf-8" location="classpath:db/${database.initLocation}"/>
+        <!--<jdbc:script encoding="utf-8" location="classpath:db/${jdbc.initpopulate}"/>-->
+    </jdbc:initialize-database>
 
     <!--Поддержка аннотаций @Transaction transaction-manager="transactionManager"-->
     <tx:annotation-driven/>
@@ -34,10 +50,10 @@
 
     <!-- Datasource. Источник данных Spring JDBC - база MySQL -->
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-        <property name="url" value="jdbc:mysql://localhost:3306/onshope" />
-        <property name="username" value="root" />
-        <property name="password" value="root" />
+        <property name="driverClassName" value="${database.driverClassName}" />
+        <property name="url" value="${database.url}" />
+        <property name="username" value="${database.username}" />
+        <property name="password" value="${database.password}" />
     </bean>
 
     <!--Нужен для хранения абстрактного интерфейса репозетария JPA -->
