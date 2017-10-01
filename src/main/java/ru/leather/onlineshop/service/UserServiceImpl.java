@@ -3,6 +3,8 @@ package ru.leather.onlineshop.service;
 import ch.qos.logback.classic.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.leather.onlineshop.model.Contacts;
@@ -15,19 +17,19 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import static ru.leather.onlineshop.utils.DatabasePasswordEncoder.encode;
+
 
 @Service
 public class UserServiceImpl implements UserService {
 
     static final Logger logger = (Logger) LoggerFactory.getLogger(UserDetailsServiceImpl.class);
 
-
     @Autowired
     private UserRepository userRepository;
 
     @Autowired
     private RolesRepository rolesRepository;
-
 
     @Override
     @Transactional
@@ -36,9 +38,8 @@ public class UserServiceImpl implements UserService {
         Contacts contacts = new Contacts();
 
         user.setRegistered(LocalDate.now());
-
+        user.setPassword(encode(user.getPassword()));
         roles.add(rolesRepository.findByName("ROLE_USER"));
-
         user.setContact(contacts);
 
         user.setRoles(roles);
