@@ -3,6 +3,7 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:jpa="http://www.springframework.org/schema/data/jpa"
        xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:p="http://www.springframework.org/schema/p"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:jdbc="http://www.springframework.org/schema/jdbc"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
@@ -18,7 +19,7 @@
 
     <!--Механизм подстановки переменных-заполнителей из файла properties-->
     <context:property-placeholder
-            location="classpath:db/db.properties" />
+            location="classpath:db/*.properties" />
 
     <!--Инициализации базы данных первоночальными скриптами-->
     <jdbc:initialize-database data-source="dataSource" enabled="${database.init}">
@@ -30,31 +31,33 @@
     <tx:annotation-driven/>
 
     <!--Обеспечивает работу с транзакциями в Spring -->
-    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
-        <property name="entityManagerFactory" ref="emf"/>
-    </bean>
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"
+        p:entityManagerFactory-ref="emf"
+    />
+
 
     <!--Настройка emf(фабрики диспетчера сущностей) механизма JPA, управляемого контейнером -->
-    <bean id="emf" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-        <property name="dataSource" ref="dataSource" />
-        <property name="jpaVendorAdapter" ref="jpaVendorAdapter" />
-        <property name="packagesToScan" value="ru.leather.onlineshop.model"/>
-    </bean>
+    <bean id="emf" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
+        p:dataSource-ref="dataSource"
+        p:jpaVendorAdapter-ref="jpaVendorAdapter"
+        p:packagesToScan="ru.leather.onlineshop.model"
+    />
 
-    <bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
-        <property name="database" value="MYSQL" />
-        <property name="showSql" value="true"/>
-        <property name="generateDdl" value="false"/>
-        <property name="databasePlatform" value="org.hibernate.dialect.MySQLDialect" />
-    </bean>
+    <bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"
+        p:database="${database.db}"
+        p:showSql="true"
+        p:generateDdl="false"
+        p:databasePlatform="${database.platform}"
+    />
 
     <!-- Datasource. Источник данных Spring JDBC - база MySQL -->
-    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-        <property name="driverClassName" value="${database.driverClassName}" />
-        <property name="url" value="${database.url}" />
-        <property name="username" value="${database.username}" />
-        <property name="password" value="${database.password}" />
-    </bean>
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+        p:driverClassName="${database.driverClassName}"
+        p:url="${database.url}"
+        p:username="${database.username}"
+        p:password="${database.password}"
+    />
+
 
     <!--Нужен для хранения абстрактного интерфейса репозетария JPA -->
     <jpa:repositories base-package="ru.leather.onlineshop.repository" entity-manager-factory-ref="emf"
