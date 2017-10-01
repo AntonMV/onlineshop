@@ -16,15 +16,6 @@
         <div class="col-md-6 col-md-offset-3">
 
             <form:form method="POST" modelAttribute="userForm" data-toggle="validator" role="form">
-                <spring:bind path="name">
-                <div class="form-group">
-                    <label for="inputName" class="control-label">Ваше имя</label>
-                    <form:input path="name" type="text" class="form-control" id="inputName" placeholder="Введите Ваше имя"></form:input>
-                    <div class="help-block with-errors">
-                        <span class="error"><form:errors path="name" /></span>
-                    </div>
-                </div>
-                </spring:bind>
                 <spring:bind path="email">
                 <div class="form-group">
                     <label for="inputEmail" class="control-label">Ваш E-mail</label>

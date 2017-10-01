@@ -70,6 +70,11 @@
                                             <form:input path="id" type = "hidden"></form:input>
                                         </div>
                                     </spring:bind>
+                                    <spring:bind path="contact.id">
+                                        <div class="form-group">
+                                            <form:input path="contact.id" type = "hidden"></form:input>
+                                        </div>
+                                    </spring:bind>
                                     <spring:bind path="contact.name">
                                         <div class="form-group">
                                             <label for="inputName" class="control-label">Ваше имя</label>

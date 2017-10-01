@@ -11,8 +11,6 @@ import ru.leather.onlineshop.model.User;
 import ru.leather.onlineshop.repository.RolesRepository;
 import ru.leather.onlineshop.repository.UserRepository;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,14 +28,18 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private RolesRepository rolesRepository;
 
+
     @Override
     @Transactional
     public void addUser(User user) {
         List<Roles> roles = new ArrayList<>();
+        Contacts contacts = new Contacts();
 
         user.setRegistered(LocalDate.now());
 
-        roles.add(rolesRepository.findOne(2));
+        roles.add(rolesRepository.findByName("ROLE_USER"));
+
+        user.setContact(contacts);
 
         user.setRoles(roles);
             logger.info("Roles to add default: ", roles.get(0));
@@ -61,19 +63,9 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public void editUser(User user) {
 
-//        userRepository.updateEmail(user.getId(),user.getContact().getName(), user.getContact().getAddress(),
-//                       user.getContact().getPhone(),user.getContact().getBirthday());
-
-          User userup = userRepository.findOne(user.getId());
-          Contacts contacts = user.getContact();
-          contacts.setName(user.getContact().getName());
-          contacts.setAddress(user.getContact().getAddress());
-          contacts.setPhone(user.getContact().getPhone());
-          contacts.setBirthday(user.getContact().getBirthday());
-          userup.setContact(contacts);
-
-
-          userRepository.save(userup);
+          User upuser = userRepository.findOne(user.getId());
+          upuser.setContact(user.getContact());
+          userRepository.save(upuser);
     }
 
     @Override

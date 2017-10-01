@@ -18,7 +18,6 @@ public class Contacts {
     private int id;
 
     @Basic
-    @NotBlank
     @Column(name = "name")
     private String name;
 

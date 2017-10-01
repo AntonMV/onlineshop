@@ -22,7 +22,7 @@ public class User {
     private String email;
 
     @Basic
-    @Size(min=8, max=30)
+    @Size(min=1, max=30)
     @Column(name = "password")
     private String password;
 
@@ -35,7 +35,7 @@ public class User {
     @Column(name = "enable")
     private Boolean enable;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "contact_id")
     private Contacts contact;
 

@@ -50,7 +50,7 @@
     <http use-expressions="true">
         <!--<csrf disabled="true"/>-->
         <intercept-url pattern="/product" access="hasRole('ROLE_USER')" />
-        <intercept-url pattern="/users" access="hasRole('ROLE_ADMIN')" />
+        <!--<intercept-url pattern="/users" access="hasRole('ROLE_ADMIN')" />-->
         <form-login login-page="/login"
                     username-parameter="username"
                     password-parameter="password"
