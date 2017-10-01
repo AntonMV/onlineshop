@@ -22,7 +22,7 @@ public class User {
     private String email;
 
     @Basic
-    @Size(min=1, max=200)
+    @Size(min=1)
     @Column(name = "password")
     private String password;
 

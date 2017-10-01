@@ -43,6 +43,10 @@ public class UserController {
         if (bindingResult.hasErrors()) {
             return "registration";
         }
+        if (userForm.getEmail().equals(userService.getByNameUser(userForm.getEmail()).getEmail())){
+            bindingResult.rejectValue("email", "error.email");
+            return "registration";
+        }
         userService.addUser(userForm);
         return "redirect:/index";
     }
