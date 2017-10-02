@@ -53,7 +53,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Отправить</button>
+                    <button type="submit" class="btn btn-success">Отправить</button>
                 </div>
             </form:form>
         </div>

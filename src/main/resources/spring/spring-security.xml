@@ -83,9 +83,9 @@
     <beans:bean id="bcryptEncoder"
                 class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
 
-    <beans:bean class="org.springframework.security.authentication.dao.ReflectionSaltSource" id="saltSource"
-        p:userPropertyToUse="username"
-    />
+    <!--<beans:bean class="org.springframework.security.authentication.dao.ReflectionSaltSource"-->
+        <!--p:userPropertyToUse="username"-->
+    <!--/>-->
 
     <authentication-manager alias="authenticationManager">
         <authentication-provider user-service-ref="userDetailsServiceImpl">

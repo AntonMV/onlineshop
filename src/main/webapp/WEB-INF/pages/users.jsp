@@ -48,6 +48,7 @@
                             <ul id="myTab" class="nav nav-pills">
                                 <li class="active"><a href="#detail" data-toggle="tab">О пользователе</a></li>
                                 <li class=""><a href="#contact" data-toggle="tab">Редактировать</a></li>
+                                <li class=""><a href="#changepass" data-toggle="tab">Сменить пароль</a></li>
                             </ul>
                             <hr>
                             <div class="tab-pane fade active in" id="detail">
@@ -113,6 +114,31 @@
                                     </spring:bind>
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-success" data-original-title="" title="">Сохранить</button>
+                                    </div>
+                                </form:form>
+                            </div>
+                            <div class="tab-pane fade" id="changepass">
+                                <form:form method="POST" modelAttribute="objUser" data-toggle="validator" role="form">
+                                    <div class="form-group">
+                                        <label for="inputPassword" class="control-label">Введите пароль</label>
+                                        <div class="form-inline row">
+                                            <spring:bind path="password">
+                                                <div class="form-group col-sm-6">
+                                                    <form:input path="password" type="password" data-toggle="validator" data-minlength="8" class="form-control" id="inputPassword" placeholder="Enter you password"></form:input>
+                                                    <div class="help-block with-errors">
+                                                        <span class="error"><form:errors path="password" /></span>
+                                                    </div>
+                                                    <span class="help-block">Минимум 8 значений</span>
+                                                </div>
+                                            </spring:bind>
+                                            <div class="form-group col-sm-6">
+                                                <input type="password" class="form-control" id="inputPasswordConfirm" data-match="#inputPassword" data-match-error="Ошибка! Пароли не совпадают!" placeholder="Повторите пароль">
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-success">Отправить</button>
                                     </div>
                                 </form:form>
                             </div>
