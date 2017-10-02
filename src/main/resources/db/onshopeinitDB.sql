@@ -1,10 +1,10 @@
 CREATE DATABASE  IF NOT EXISTS `onshope` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `onshope`;
--- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.12, for Win32 (AMD64)
 --
 -- Host: localhost    Database: onshope
 -- ------------------------------------------------------
--- Server version	5.5.23
+-- Server version	5.7.19-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -31,7 +31,7 @@ CREATE TABLE `contacts` (
   `phone` varchar(20) DEFAULT NULL,
   `birthday` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +40,7 @@ CREATE TABLE `contacts` (
 
 LOCK TABLES `contacts` WRITE;
 /*!40000 ALTER TABLE `contacts` DISABLE KEYS */;
-INSERT INTO `contacts` VALUES (20,'Антон Михайлов','ул.Депутатская, д.61, кв.120','9056840846','1985-03-08'),(22,'User','ул.Тестовая, д.1, кв.111','+79009009999','1999-01-01');
+INSERT INTO `contacts` VALUES (20,'Антон Михайлов','ул.Депутатская, д.61, кв.120','+79056840846','1985-03-08'),(22,'User','ул.Тестовая, д.1, кв.111','+79009009999','1999-01-01');
 /*!40000 ALTER TABLE `contacts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -133,7 +133,7 @@ DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(45) NOT NULL,
-  `password` varchar(45) NOT NULL,
+  `password` varchar(255) NOT NULL,
   `registered` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `enable` tinyint(1) NOT NULL DEFAULT '1',
   `contact_id` int(11) NOT NULL,
@@ -141,7 +141,7 @@ CREATE TABLE `user` (
   UNIQUE KEY `user_email_uindex` (`email`),
   KEY `user_contacts_id_fk` (`contact_id`),
   CONSTRAINT `user_contacts_id_fk` FOREIGN KEY (`contact_id`) REFERENCES `contacts` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=71 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -150,7 +150,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (61,'mikhaylov86@gmail.com','1','2017-09-30 21:00:00',1,20),(62,'user@bk.ru','1','2017-09-30 21:00:00',1,22);
+INSERT INTO `user` VALUES (61,'mikhaylov86@gmail.com','$2a$10$ncUjrX0QpVxFAMvYfbilP.f.oa.pRoOccU6BYGeIptd9PpaWcTpvK','2017-10-02 07:28:22',1,20),(62,'user@bk.ru','$2a$10$VrGKXNSP.C/wW0YvXKWTcOP3Y2d08sc0bwuUCm14NU5vixBgn75hu','2017-10-02 07:29:13',1,22);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -190,4 +190,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-10-01 14:19:47
+-- Dump completed on 2017-10-02 14:25:45
