@@ -7,6 +7,7 @@ import javax.validation.constraints.*;
 import java.time.LocalDate;
 import java.util.List;
 
+
 @Entity
 @Table(name = "user", schema = "onshope", catalog = "")
 public class User {
@@ -18,7 +19,7 @@ public class User {
 
     @Basic
     @Email
-    @Column(name = "email")
+    @Column(name = "email", unique = true, nullable = false)
     private String email;
 
     @Basic

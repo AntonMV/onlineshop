@@ -14,5 +14,7 @@ public interface UserService {
 
     void editUser(User user);
 
+    Integer getByAccount(String email);
+
     List<User> getAll();
 }

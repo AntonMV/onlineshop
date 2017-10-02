@@ -38,6 +38,7 @@ public class UserServiceImpl implements UserService {
         Contacts contacts = new Contacts();
 
         user.setRegistered(LocalDate.now());
+        user.setEmail(user.getEmail().toLowerCase());
         user.setPassword(encode(user.getPassword()));
         roles.add(rolesRepository.findByName("ROLE_USER"));
         user.setContact(contacts);
@@ -67,6 +68,11 @@ public class UserServiceImpl implements UserService {
           User upuser = userRepository.findOne(user.getId());
           upuser.setContact(user.getContact());
           userRepository.save(upuser);
+    }
+
+    @Override
+    public Integer getByAccount(String email) {
+        return userRepository.findByAccount(email);
     }
 
     @Override
