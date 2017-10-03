@@ -119,10 +119,14 @@
                             </div>
                             <div class="tab-pane fade" id="changepass">
                                 <form:form method="POST" modelAttribute="objUser" data-toggle="validator" role="form">
+                                    <spring:bind path="email">
+                                        <div class="form-group">
+                                            <form:input path="email"  type = "hidden"></form:input>
+                                        </div>
+                                    </spring:bind>
                                     <div class="form-group">
                                         <label for="inputPassword" class="control-label">Введите пароль</label>
                                         <div class="form-inline row">
-                                            <spring:bind path="password">
                                                 <div class="form-group col-sm-6">
                                                     <form:input path="password" type="password" data-toggle="validator" data-minlength="8" class="form-control" id="inputPassword" placeholder="Enter you password"></form:input>
                                                     <div class="help-block with-errors">
@@ -130,7 +134,6 @@
                                                     </div>
                                                     <span class="help-block">Минимум 8 значений</span>
                                                 </div>
-                                            </spring:bind>
                                             <div class="form-group col-sm-6">
                                                 <input type="password" class="form-control" id="inputPasswordConfirm" data-match="#inputPassword" data-match-error="Ошибка! Пароли не совпадают!" placeholder="Повторите пароль">
                                                 <div class="help-block with-errors"></div>

@@ -71,4 +71,6 @@ public class UserController {
         userService.editUser(objUser);
         return "redirect:/users";
     }
+
+
 }
