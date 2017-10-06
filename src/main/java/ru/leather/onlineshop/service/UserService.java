@@ -16,5 +16,7 @@ public interface UserService {
 
     Integer getByAccount(String email);
 
+    void changePasswod(User user);
+
     List<User> getAll();
 }

@@ -1,8 +1,6 @@
 package ru.leather.onlineshop.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -10,6 +8,10 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ru.leather.onlineshop.model.User;
 import ru.leather.onlineshop.service.UserService;
+
+import static ru.leather.onlineshop.utils.DatabasePasswordEncoder.encode;
+import static ru.leather.onlineshop.utils.DatabasePasswordEncoder.isMatch;
+import static ru.leather.onlineshop.utils.SecurityPrincipal.getUsername;
 
 
 @Controller
@@ -53,23 +55,35 @@ public class UserController {
 
     @RequestMapping(value = "/users", method = RequestMethod.GET)
     public String findUser(Model model){
-
-        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        String email = null;
-        if (principal instanceof UserDetails) {
-            email = ((UserDetails)principal).getUsername();
-        }
-        model.addAttribute("objUser", userService.getByNameUser(email));
-        return "users";
+        model.addAttribute("objUser", userService.getByNameUser(getUsername()));
+        return "profile/users";
     }
 
     @RequestMapping(value = "/users", method = RequestMethod.POST)
     public String editUser(@ModelAttribute("objUser") @Validated User objUser, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return "users";
+            return "profile/users";
         }
         userService.editUser(objUser);
-        return "redirect:/users";
+        return "profile/users";
+    }
+
+    @RequestMapping(value = "/users/changepassword", method = RequestMethod.POST)
+    public String changePasswordUser(@ModelAttribute("objUser") @Validated User objUser,
+                                     @RequestParam("oldPassword") String oldPassword,
+                                     @RequestParam("password") String password,
+                                     BindingResult bindingResult) {
+        System.out.println(isMatch(oldPassword, encode(userService.getByNameUser(objUser.getEmail()).getPassword())));
+
+        if(isMatch(oldPassword, encode(userService.getByNameUser(objUser.getEmail()).getPassword())) == true) {
+            objUser.setPassword(password);
+            userService.changePasswod(objUser);
+        }else{
+            bindingResult.rejectValue("password", "error.pass");
+            return "profile/users";
+        }
+
+        return "profile/users";
     }
 
 

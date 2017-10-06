@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static ru.leather.onlineshop.utils.DatabasePasswordEncoder.encode;
+import static ru.leather.onlineshop.utils.DatabasePasswordEncoder.isMatch;
 
 
 @Service
@@ -78,5 +79,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> getAll() {
         return userRepository.findAll();
+    }
+
+    @Override
+    public void changePasswod(User user) {
+        User passuser = userRepository.findByName(user.getEmail());
+        passuser.setPassword(encode(user.getPassword()));
+        userRepository.save(passuser);
     }
 }
