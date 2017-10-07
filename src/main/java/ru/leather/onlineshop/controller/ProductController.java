@@ -19,10 +19,10 @@ public class ProductController {
 //        this.productService = productService;
 //    }
 
-    @RequestMapping(value = "/product")
+    @RequestMapping(value = "/products")
     public String listProduct(Map<String, Object> model){
         model.put("allProduct", productService.getAll());
         model.put("Hello","Hello Anton");
-        return "product";
+        return "products";
     }
 }

@@ -21,12 +21,11 @@ public class UserController {
     private UserService userService;
 
 
-    @RequestMapping(value = {"/" , "/index"}, method = RequestMethod.GET)
-    public String Home() {
-        return "index";
+    @RequestMapping(value = { "/", "/home" }, method = RequestMethod.GET)
+    public String homePage() {
+        return "home";
     }
 
-    
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login() {
@@ -50,25 +49,37 @@ public class UserController {
                 return "registration";
         }
         userService.addUser(userForm);
-        return "redirect:/index";
+        return "home";
     }
 
-    @RequestMapping(value = "/users", method = RequestMethod.GET)
+    @RequestMapping(value = {"/users"}, method = RequestMethod.GET)
     public String findUser(Model model){
         model.addAttribute("objUser", userService.getByNameUser(getUsername()));
-        return "profile/users";
+        return "users";
     }
 
-    @RequestMapping(value = "/users", method = RequestMethod.POST)
+    @RequestMapping(value = {"/users/edit"}, method = RequestMethod.GET)
+    public String findEditUser(Model model){
+        model.addAttribute("objUser", userService.getByNameUser(getUsername()));
+        return "users/edit";
+    }
+
+    @RequestMapping(value = {"/users/password"}, method = RequestMethod.GET)
+    public String findPasswordUser(Model model){
+        model.addAttribute("objUser", userService.getByNameUser(getUsername()));
+        return "users/password";
+    }
+
+    @RequestMapping(value = "/users/edit", method = RequestMethod.POST)
     public String editUser(@ModelAttribute("objUser") @Validated User objUser, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return "profile/users";
+            return "users/edit";
         }
         userService.editUser(objUser);
-        return "profile/users";
+        return "users";
     }
 
-    @RequestMapping(value = "/users/changepassword", method = RequestMethod.POST)
+    @RequestMapping(value = "/users/password", method = RequestMethod.POST)
     public String changePasswordUser(@ModelAttribute("objUser") @Validated User objUser,
                                      @RequestParam("oldPassword") String oldPassword,
                                      @RequestParam("password") String password,
@@ -80,10 +91,10 @@ public class UserController {
             userService.changePasswod(objUser);
         }else{
             bindingResult.rejectValue("password", "error.pass");
-            return "profile/users";
+            return "users/password";
         }
 
-        return "profile/users";
+        return "users";
     }
 
 

@@ -1,10 +1,15 @@
-
-$(document).ready(function(){
+$(function() {
     var str=location.href.toLowerCase();
-    $('.nav li a').each(function() {
+    $('.navbar-nav li a').each(function() {
         if (str.indexOf(this.href.toLowerCase()) > -1) {
-            $("li.class").removeClass("active");
-            $(this).parent().addClass("active");
+            $('.navbar-nav li').removeClass("active");
+            $(this).parent().toggleClass("active");
+        }
+    });
+    $('.nav-pills li a').each(function() {
+        if (str.indexOf(this.href.toLowerCase()) > -1) {
+            $('.nav-pills li').removeClass("active");
+            $(this).parent().toggleClass("active");
         }
     });
 });

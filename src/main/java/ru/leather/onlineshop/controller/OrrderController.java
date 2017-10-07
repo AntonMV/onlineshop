@@ -13,9 +13,9 @@ public class OrrderController {
     @Autowired
     private OrrderService orrderService;
 
-    @RequestMapping(value = "/order")
+    @RequestMapping(value = "/orders")
     public String listProduct(Map<String, Object> model){
         model.put("myOrder", orrderService.getAll());
-        return "order";
+        return "orders";
     }
 }
