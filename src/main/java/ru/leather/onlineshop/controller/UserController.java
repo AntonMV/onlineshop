@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.*;
 import ru.leather.onlineshop.model.User;
 import ru.leather.onlineshop.service.UserService;
 
+import java.util.Optional;
+
 import static ru.leather.onlineshop.utils.DatabasePasswordEncoder.encode;
 import static ru.leather.onlineshop.utils.DatabasePasswordEncoder.isMatch;
 import static ru.leather.onlineshop.utils.SecurityPrincipal.getUsername;
@@ -52,22 +54,16 @@ public class UserController {
         return "redirect:/home";
     }
 
-    @RequestMapping(value = {"/users"}, method = RequestMethod.GET)
-    public String findUser(Model model){
+    @RequestMapping(value = {"/users/{action}","/users"}, method = RequestMethod.GET)
+    public String findUser(Model model, @PathVariable Optional<String> action){
         model.addAttribute("objUser", userService.getByNameUser(getUsername()));
+        if (action.isPresent()) {
+            switch (action.get()){
+                case "password": return "users/password";
+                case "edit": return "users/edit";
+            }
+        }
         return "users";
-    }
-
-    @RequestMapping(value = {"/users/edit"}, method = RequestMethod.GET)
-    public String findEditUser(Model model){
-        model.addAttribute("objUser", userService.getByNameUser(getUsername()));
-        return "users/edit";
-    }
-
-    @RequestMapping(value = {"/users/password"}, method = RequestMethod.GET)
-    public String findPasswordUser(Model model){
-        model.addAttribute("objUser", userService.getByNameUser(getUsername()));
-        return "users/password";
     }
 
     @RequestMapping(value = "/users/edit", method = RequestMethod.POST)
