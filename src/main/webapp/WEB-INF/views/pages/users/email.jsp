@@ -13,18 +13,18 @@
         <form:input path="contact.id" type = "hidden"/>
     </div>
     <div class="form-group">
-        <label for="oldPassword" class="control-label">Введите старый пароль</label>
-        <input id="oldPassword" name="oldPassword" type="password" data-toggle="validator" class="form-control" placeholder="старый">
+        <label for="oldEmail" class="control-label">Введите старый email</label>
+        <input id="oldEmail" name="oldEmail" type="email" data-toggle="validator" class="form-control" placeholder="старый">
         <div class="help-block with-errors">
-            <span class="error"><form:errors path="password" /></span>
+            <span class="error"><form:errors path="email" /></span>
         </div>
     </div>
     <div class="form-group">
-        <label for="changePassword" class="control-label">Введите новый пароль</label>
-        <input id="changePassword" name="password" type="password" data-toggle="validator" data-minlength="8" data-minlength-error="Мин. длинна 8 символов" class="form-control" placeholder="новый">
+        <label for="changeEmail" class="control-label">Введите новый email</label>
+        <input id="changeEmail" name="email" type="email" data-toggle="validator" class="form-control" placeholder="новый">
     </div>
     <div class="form-group">
-        <input type="password" class="form-control" id="inputPasswordConfirm" data-match="#changePassword" data-match-error="Ошибка! Пароли не совпадают!" placeholder="повторите пароль">
+        <input type="email" class="form-control" id="inputEmailConfirm" data-match="#changeEmail" data-match-error="Ошибка! Адреса не совпадают!" placeholder="повторите email">
         <div class="help-block with-errors"></div>
     </div>
     <div class="form-group">

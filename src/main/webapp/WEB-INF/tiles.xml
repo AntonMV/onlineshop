@@ -73,4 +73,14 @@
         </put-attribute>
     </definition>
 
+    <!-- Users email Page -->
+    <definition name="users/email" extends="base-definition">
+        <put-attribute name="title" value="Email" />
+        <put-attribute name="body">
+            <definition template="/WEB-INF/views/tiles/template/defaultUsers.jsp">
+                <put-attribute name="body" value="/WEB-INF/views/pages/users/email.jsp" />
+            </definition>
+        </put-attribute>
+    </definition>
+
 </tiles-definitions>

@@ -66,6 +66,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
+    public void editEmail(User user) {
+        User eduser = getByIdUser(user.getId());
+        eduser.setEmail(user.getEmail());
+        logger.info("Update email user: ", eduser.getEmail());
+        userRepository.saveAndFlush(eduser);
+    }
+
+    @Override
     public void deleteUser(Integer id) {
         userRepository.delete(id);
     }

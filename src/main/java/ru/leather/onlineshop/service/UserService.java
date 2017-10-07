@@ -20,5 +20,7 @@ public interface UserService {
 
     void editPassword(User user);
 
+    void editEmail(User user);
+
     List<User> getAll();
 }

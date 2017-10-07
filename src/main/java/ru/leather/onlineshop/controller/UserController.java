@@ -59,8 +59,9 @@ public class UserController {
         model.addAttribute("objUser", userService.getByNameUser(getUsername()));
         if (action.isPresent()) {
             switch (action.get()){
-                case "password": return "users/password";
                 case "edit": return "users/edit";
+                case "password": return "users/password";
+                case "email": return "users/email";
             }
         }
         return "users";
@@ -87,6 +88,23 @@ public class UserController {
         }else{
             bindingResult.rejectValue("password", "error.pass");
             return "users/password";
+        }
+
+        return "redirect:/users";
+    }
+
+    @RequestMapping(value = "/users/email", method = RequestMethod.POST)
+    public String changeEmailUser(@ModelAttribute("objUser") @Validated User objUser,
+                                     @RequestParam("oldEmail") String oldEmail,
+                                     @RequestParam("email") String email,
+                                     BindingResult bindingResult) {
+
+        if(userService.getByIdUser(objUser.getId()).getEmail().contains(oldEmail)) {
+            objUser.setEmail(email);
+            userService.editEmail(objUser);
+        }else{
+            bindingResult.rejectValue("email", "error.upemail");
+            return "users/email";
         }
 
         return "redirect:/users";
