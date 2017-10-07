@@ -12,11 +12,13 @@ public interface UserService {
 
     User getByNameUser(String email);
 
+    User getByIdUser(Integer id);
+
     void editUser(User user);
 
     Integer getByAccount(String email);
 
-    void changePasswod(User user);
+    void editPassword(User user);
 
     List<User> getAll();
 }

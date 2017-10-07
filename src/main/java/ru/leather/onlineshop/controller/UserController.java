@@ -49,7 +49,7 @@ public class UserController {
                 return "registration";
         }
         userService.addUser(userForm);
-        return "home";
+        return "redirect:/home";
     }
 
     @RequestMapping(value = {"/users"}, method = RequestMethod.GET)
@@ -76,7 +76,7 @@ public class UserController {
             return "users/edit";
         }
         userService.editUser(objUser);
-        return "users";
+        return "redirect:/users";
     }
 
     @RequestMapping(value = "/users/password", method = RequestMethod.POST)
@@ -84,17 +84,16 @@ public class UserController {
                                      @RequestParam("oldPassword") String oldPassword,
                                      @RequestParam("password") String password,
                                      BindingResult bindingResult) {
-        System.out.println(isMatch(oldPassword, encode(userService.getByNameUser(objUser.getEmail()).getPassword())));
 
-        if(isMatch(oldPassword, encode(userService.getByNameUser(objUser.getEmail()).getPassword())) == true) {
+        if(isMatch(oldPassword, encode(userService.getByIdUser(objUser.getId()).getPassword())) == true) {
             objUser.setPassword(password);
-            userService.changePasswod(objUser);
+            userService.editPassword(objUser);
         }else{
             bindingResult.rejectValue("password", "error.pass");
             return "users/password";
         }
 
-        return "users";
+        return "redirect:/users";
     }
 
 

@@ -39,9 +39,11 @@
     <script type="text/javascript" src="/webjars/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js" defer></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="/resources/js/ie10-viewport-bug-workaround.js"></script>
+    <script type="text/javascript" src="/resources/js/ie10-viewport-bug-workaround.js"></script>
     <!--Custom scripts-->
-    <script src="/resources/js/scripts.js"></script>
+    <script type="text/javascript" src="/resources/js/scripts.js"></script>
+    <!--Validator-->
+    <script type="text/javascript" src="/webjars/bootstrap-validator/0.7.3/js/validator.js"></script>
 
 </head>
 
@@ -51,7 +53,6 @@
         <header id="header">
             <tiles:insertAttribute name="header" />
         </header>
-
         <section id="sidemenu">
             <tiles:insertAttribute name="menu" />
         </section>
@@ -59,7 +60,6 @@
     <section id="site-content">
         <tiles:insertAttribute name="body" />
     </section>
-
     <footer id="footer">
         <tiles:insertAttribute name="footer" />
     </footer>

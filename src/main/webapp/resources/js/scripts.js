@@ -12,4 +12,7 @@ $(function() {
             $(this).parent().toggleClass("active");
         }
     });
+    $('input').click(function(){
+        $('.error').empty();
+    });
 });

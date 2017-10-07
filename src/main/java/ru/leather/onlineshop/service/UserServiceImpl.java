@@ -37,19 +37,32 @@ public class UserServiceImpl implements UserService {
     public void addUser(User user) {
         List<Roles> roles = new ArrayList<>();
         Contacts contacts = new Contacts();
-
         user.setRegistered(LocalDate.now());
         user.setEmail(user.getEmail().toLowerCase());
         user.setPassword(encode(user.getPassword()));
         roles.add(rolesRepository.findByName("ROLE_USER"));
         user.setContact(contacts);
-
         user.setRoles(roles);
-            logger.info("Roles to add default: ", roles.get(0));
         user.setEnable(true);
-            logger.info("User field: ", user.toString());
-
+            logger.info("User add: ", user.getEmail());
         userRepository.saveAndFlush(user);
+    }
+
+    @Override
+    @Transactional
+    public void editUser(User user) {
+        User upuser = getByIdUser(user.getId());
+        upuser.setContact(user.getContact());
+            logger.info("Update fields user: ", upuser.getEmail());
+        userRepository.save(upuser);
+    }
+
+    @Override
+    public void editPassword(User user) {
+        User passuser = getByIdUser(user.getId());
+        passuser.setPassword(encode(user.getPassword()));
+            logger.info("Update password user: ", passuser.getEmail());
+        userRepository.save(passuser);
     }
 
     @Override
@@ -63,15 +76,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    @Transactional
-    public void editUser(User user) {
-
-          User upuser = userRepository.findOne(user.getId());
-          upuser.setContact(user.getContact());
-          userRepository.save(upuser);
-    }
-
-    @Override
     public Integer getByAccount(String email) {
         return userRepository.findByAccount(email);
     }
@@ -82,9 +86,5 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void changePasswod(User user) {
-        User passuser = userRepository.findByName(user.getEmail());
-        passuser.setPassword(encode(user.getPassword()));
-        userRepository.save(passuser);
-    }
+    public User getByIdUser(Integer id) { return userRepository.findOne(id); }
 }

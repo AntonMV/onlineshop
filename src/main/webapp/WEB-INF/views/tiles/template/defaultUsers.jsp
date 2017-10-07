@@ -44,17 +44,7 @@
                             <li><a href="users/edit">Редактировать</a></li>
                             <li><a href="users/password">Сменить пароль</a></li>
                         </ul>
-
                         <tiles:insertAttribute name="body" />
-                            <%--<tiles:insertAttribute name="information" />--%>
-
-                        <%--<div class="tab-pane fade" id="contact">--%>
-                            <%--<tiles:insertAttribute name="edit" />--%>
-                        <%--</div>--%>
-
-                        <%--<div class="tab-pane fade" id="changepass">--%>
-                            <%--<tiles:insertAttribute name="password" />--%>
-                        <%--</div>--%>
                     </div>
                 </div>
             </div>

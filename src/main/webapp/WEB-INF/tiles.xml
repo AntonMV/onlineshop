@@ -43,38 +43,34 @@
         <put-attribute name="body" value="/WEB-INF/views/pages/orders.jsp" />
     </definition>
 
-    <!-- Users Page -->
+    <!-- Users information Page -->
     <definition name="users" extends="base-definition">
-        <put-attribute name="title" value="Contact Us" />
-        <put-attribute name="body" value="users.information" />
+        <put-attribute name="title" value="Information" />
+        <put-attribute name="body">
+            <definition template="/WEB-INF/views/tiles/template/defaultUsers.jsp">
+                <put-attribute name="body" value="/WEB-INF/views/pages/users/information.jsp" />
+            </definition>
+        </put-attribute>
     </definition>
 
-    <!-- Users Page -->
+    <!-- Users edit Page -->
     <definition name="users/edit" extends="base-definition">
-        <put-attribute name="title" value="Contact Us" />
-        <put-attribute name="body" value="users.edit" />
+        <put-attribute name="title" value="Edit" />
+        <put-attribute name="body">
+            <definition template="/WEB-INF/views/tiles/template/defaultUsers.jsp">
+                <put-attribute name="body" value="/WEB-INF/views/pages/users/edit.jsp" />
+            </definition>
+        </put-attribute>
     </definition>
 
-    <!-- Users Page -->
+    <!-- Users password Page -->
     <definition name="users/password" extends="base-definition">
-        <put-attribute name="title" value="Contact Us" />
-        <put-attribute name="body" value="users.password" />
+        <put-attribute name="title" value="Password" />
+        <put-attribute name="body">
+            <definition template="/WEB-INF/views/tiles/template/defaultUsers.jsp">
+                <put-attribute name="body" value="/WEB-INF/views/pages/users/password.jsp" />
+            </definition>
+        </put-attribute>
     </definition>
-
-    <!-- User Definition -->
-        <definition name="users.information" template="/WEB-INF/views/tiles/template/defaultUsers.jsp">
-            <put-attribute name="body" value="/WEB-INF/views/pages/users/information.jsp" />
-        </definition>
-
-
-        <!-- User Definition -->
-        <definition name="users.edit" template="/WEB-INF/views/tiles/template/defaultUsers.jsp">
-            <put-attribute name="body" value="/WEB-INF/views/pages/users/edit.jsp" />
-        </definition>
-
-        <!-- Password Page -->
-        <definition name="users.password" template="/WEB-INF/views/tiles/template/defaultUsers.jsp">
-            <put-attribute name="body" value="/WEB-INF/views/pages/users/password.jsp" />
-        </definition>
 
 </tiles-definitions>
