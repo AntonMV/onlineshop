@@ -63,8 +63,7 @@
         <remember-me remember-me-parameter="remember-me"
                      key= "myKey"
                      token-validity-seconds= "300"/>
-        <logout logout-success-url="/" invalidate-session="true"  />
-
+        <logout logout-success-url="/login" invalidate-session="true"  />
     </http>
 
     <!--<authentication-manager>-->

@@ -20,7 +20,7 @@
                 </c:if>
                 <c:if test= "${isUser}">
                     <p class="text-right"><spring:message code="label.logwelcome"/>
-                        <sec:authentication property = "principal.username"/><spring:message code="label.logrole"/>
+                        <sec:authentication property = "principal.username"/> <spring:message code="label.logrole"/>
                         <b><sec:authentication property= "principal.authorities"/></b>
                     </p>
                 </c:if>

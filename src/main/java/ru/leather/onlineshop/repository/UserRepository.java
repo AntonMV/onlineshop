@@ -5,8 +5,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.transaction.annotation.Transactional;
 import ru.leather.onlineshop.model.User;
 
-import java.time.LocalDate;
-
 @Transactional(readOnly = true)
 public interface UserRepository extends JpaRepository<User, Integer> {
 
