@@ -1,19 +1,20 @@
 package ru.leather.onlineshop.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ru.leather.onlineshop.model.User;
 import ru.leather.onlineshop.service.UserService;
 
+import java.security.Principal;
+import java.util.Map;
 import java.util.Optional;
 
 import static ru.leather.onlineshop.utils.DatabasePasswordEncoder.encode;
 import static ru.leather.onlineshop.utils.DatabasePasswordEncoder.isMatch;
-import static ru.leather.onlineshop.utils.SecurityPrincipal.getUsername;
 
 
 @Controller
@@ -36,8 +37,8 @@ public class UserController {
 
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
-    public String registration(Model model) {
-        model.addAttribute("userForm", new User());
+    public String registration(Map<String,Object> model) {
+        model.put("userForm", new User());
         return "registration";
     }
 
@@ -55,8 +56,8 @@ public class UserController {
     }
 
     @RequestMapping(value = {"/users/{action}","/users"}, method = RequestMethod.GET)
-    public String findUser(Model model, @PathVariable Optional<String> action){
-        model.addAttribute("objUser", userService.getByNameUser(getUsername()));
+    public String findUser(Map<String,Object> model, @PathVariable Optional<String> action, Principal principal){
+        model.put("objUser", userService.getByNameUser(principal.getName()));
         if (action.isPresent()) {
             switch (action.get()){
                 case "edit": return "users/edit";
@@ -82,7 +83,7 @@ public class UserController {
                                      @RequestParam("password") String password,
                                      BindingResult bindingResult) {
 
-        if(isMatch(oldPassword, encode(userService.getByIdUser(objUser.getId()).getPassword())) == true) {
+        if(isMatch(oldPassword, encode(userService.getByIdUser(objUser.getId()).getPassword()))) {
             objUser.setPassword(password);
             userService.editPassword(objUser);
         }else{

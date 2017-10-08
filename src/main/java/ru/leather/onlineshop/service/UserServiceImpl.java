@@ -3,8 +3,6 @@ package ru.leather.onlineshop.service;
 import ch.qos.logback.classic.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.leather.onlineshop.model.Contacts;
@@ -18,7 +16,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static ru.leather.onlineshop.utils.DatabasePasswordEncoder.encode;
-import static ru.leather.onlineshop.utils.DatabasePasswordEncoder.isMatch;
 
 
 @Service
@@ -71,7 +68,7 @@ public class UserServiceImpl implements UserService {
         User eduser = getByIdUser(user.getId());
         eduser.setEmail(user.getEmail());
         logger.info("Update email user: ", eduser.getEmail());
-        userRepository.saveAndFlush(eduser);
+        userRepository.save(eduser);
     }
 
     @Override
@@ -86,7 +83,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Integer getByAccount(String email) {
-        return userRepository.findByAccount(email);
+        return userRepository.countFindAccount(email);
     }
 
     @Override

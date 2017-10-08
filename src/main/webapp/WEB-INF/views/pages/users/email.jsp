@@ -21,7 +21,7 @@
     </div>
     <div class="form-group">
         <label for="changeEmail" class="control-label">Введите новый email</label>
-        <input id="changeEmail" name="email" type="email" data-toggle="validator" class="form-control" placeholder="новый">
+        <input id="changeEmail" required="required" name="email" type="email" data-toggle="validator" class="form-control" placeholder="новый">
     </div>
     <div class="form-group">
         <input type="email" class="form-control" id="inputEmailConfirm" data-match="#changeEmail" data-match-error="Ошибка! Адреса не совпадают!" placeholder="повторите email">
