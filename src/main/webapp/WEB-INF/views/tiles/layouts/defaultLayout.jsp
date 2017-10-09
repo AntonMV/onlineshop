@@ -26,6 +26,7 @@
     <!-- Custom styles for this template -->
     <link href="/resources/css/justified-nav.css" rel="stylesheet">
     <link href="/resources/css/user.css" rel="stylesheet">
+    <link href="/resources/css/404.css" rel="stylesheet">
     <!-- Font Awesome-->
     <link rel="stylesheet" href="/resources/css/font-awesome.min.css">
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->

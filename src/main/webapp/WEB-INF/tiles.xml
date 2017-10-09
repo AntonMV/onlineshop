@@ -83,4 +83,14 @@
         </put-attribute>
     </definition>
 
+    <!-- Error Page -->
+    <!-- Product Page -->
+    <definition name="404" extends="base-definition">
+        <put-attribute name="title" value="Error" />
+        <put-attribute name="body" value="/WEB-INF/views/tiles/template/defaultError404.jsp" />
+        <put-attribute name="menu" value="" />
+        <put-attribute name="header" value="" />
+        <put-attribute name="footer" value="" />
+    </definition>
+
 </tiles-definitions>
