@@ -40,7 +40,7 @@ CREATE TABLE `contacts` (
 
 LOCK TABLES `contacts` WRITE;
 /*!40000 ALTER TABLE `contacts` DISABLE KEYS */;
-INSERT INTO `contacts` VALUES (20,'Антон Михайлов','ул.Депутатская, д.61, кв.120','+79056840846','1985-03-08'),(22,'User','ул.Тестовая, д.1, кв.111','+79009009999','1999-01-01');
+INSERT INTO `contacts` VALUES (20,'Антон Михайлов','ул.Депутатская, д.67, кв.166','+79056840887','1985-03-08'),(22,'User','ул.Тестовая, д.1, кв.111','+79009009999','1999-01-01');
 /*!40000 ALTER TABLE `contacts` ENABLE KEYS */;
 UNLOCK TABLES;
 
