@@ -11,8 +11,12 @@
         <tbody>
         <tr><td class="active">Имя</td><td>${objUser.contact.name}</td></tr>
         <tr><td class="active">Email:</td><td>${objUser.email}</td></tr>
-        <tr><td class="active">Зарегистрирован:</td><td>${objUser.registered}</td></tr>
-        <tr><td class="active">День рождения:</td><td>${objUser.contact.birthday}</td></tr>
+        <tr><td class="active">Зарегистрирован:</td><td>
+            <fmt:parseDate value="${objUser.registered}" pattern="yyyy-MM-dd" var="parsed" type="both" />
+            <fmt:formatDate pattern="dd.MM.yyyy" value="${parsed}" /></td></tr>
+        <tr><td class="active">День рождения:</td><td>
+            <fmt:parseDate value="${objUser.contact.birthday}" pattern="yyyy-MM-dd" var="parsed" type="both" />
+            <fmt:formatDate pattern="dd.MM.yyyy" value="${parsed}" /></td></tr>
         <tr><td class="active">Телефон:</td><td>${objUser.contact.phone}</td></tr>
         <tr><td class="active">Адрес:</td><td>${objUser.contact.address}</td></tr>
         </tbody>
