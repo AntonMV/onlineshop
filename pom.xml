@@ -169,7 +169,6 @@
       <version>${commons-fileupload.version}</version>
     </dependency>
     <!--Apache Tiles-->
-    <!--Apache Tiles-->
     <dependency>
       <groupId>org.apache.tiles</groupId>
       <artifactId>tiles-extras</artifactId>
