@@ -29,6 +29,7 @@ CREATE TABLE `contacts` (
   `name` varchar(45) DEFAULT NULL,
   `address` varchar(100) DEFAULT NULL,
   `phone` varchar(20) DEFAULT NULL,
+  `avatar` varchar(255) DEFAULT NULL,
   `birthday` date DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
@@ -40,7 +41,7 @@ CREATE TABLE `contacts` (
 
 LOCK TABLES `contacts` WRITE;
 /*!40000 ALTER TABLE `contacts` DISABLE KEYS */;
-INSERT INTO `contacts` VALUES (20,'Антон Михайлов','ул.Депутатская, д.67, кв.166','+79056840887','1985-03-08'),(22,'User','ул.Тестовая, д.1, кв.111','+79009009999','1999-01-01');
+INSERT INTO `contacts` VALUES (20,'Антон Михайлов','ул.Депутатская, д.67, кв.166','+79056840887',NULL ,'1985-03-08'),(22,'User','ул.Тестовая, д.1, кв.111','+79009009999',NULL ,'1999-01-01');
 /*!40000 ALTER TABLE `contacts` ENABLE KEYS */;
 UNLOCK TABLES;
 
