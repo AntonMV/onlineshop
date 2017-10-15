@@ -21,7 +21,15 @@
                 </div>
                 <div class="panel-body">
                     <div class="text-center" id="author">
-                        <img src="resources/img/myprofile.jpg">
+                        <c:set var="StrVar" value="${objUser.contact.avatar}"/>
+                        <c:choose>
+                            <c:when test="${empty StrVar}">
+                                <img style="width: 222px; height: 222px;" src="resources/img/myprofile.jpg">
+                            </c:when>
+                            <c:otherwise>
+                                <img style="width: 222px; height: 222px;" src="resources/${objUser.contact.avatar}">
+                            </c:otherwise>
+                        </c:choose>
                         <h3>${objUser.contact.name}</h3>
                         <small class="label label-warning">Российская Федерация</small>
                         <p class="sosmed-author">

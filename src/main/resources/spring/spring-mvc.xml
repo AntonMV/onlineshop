@@ -22,6 +22,8 @@
         p:maxUploadSize="200000"
     />
 
+    <bean id="arbitraryResourceLoader" class="ru.leather.onlineshop.utils.ArbitraryResourceLoader" />
+
     <!--Настройка интернационализации/локализации-->
     <!--необходим для настройки файла с текстом на разных языках-->
     <bean name="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource"
