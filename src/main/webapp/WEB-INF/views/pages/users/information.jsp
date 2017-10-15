@@ -22,9 +22,15 @@
         </tbody>
     </table>
 
-    <form:form action="/upload?${_csrf.parameterName}=${_csrf.token}" method="post" enctype="multipart/form-data" data-toggle="validator" role="form">
+    <form:form action="/upload?${_csrf.parameterName}=${_csrf.token}" modelAttribute="objUser" method="post" enctype="multipart/form-data" data-toggle="validator" role="form">
         <!-- Display filename inside the button instead of its label -->
     <label for="file" class="control-label">Добавить изображение пользователя: </label><br />
+    <div class="form-group">
+       <form:input path="id" type = "hidden"/>
+    </div>
+    <div class="form-group">
+       <form:input path="contact.id" type = "hidden"/>
+    </div>
     <div class="form-inline row">
         <div class="form-group col-sm-4">
             <input type="file" name="file" id="file" class="file-select"/>
@@ -34,9 +40,6 @@
         </div>
         <div class="form-group col-sm-4">
             <button type="submit" class="btn btn-success">Отправить</button>
-        </div>
-        <div class="help-block with-errors">
-            <span class="error"><form:errors path="file" /></span>
         </div>
     </div>
     </form:form>

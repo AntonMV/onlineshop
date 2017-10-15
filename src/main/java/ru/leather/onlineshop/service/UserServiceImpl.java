@@ -21,7 +21,7 @@ import static ru.leather.onlineshop.utils.DatabasePasswordEncoder.encode;
 @Service
 public class UserServiceImpl implements UserService {
 
-    static final Logger logger = (Logger) LoggerFactory.getLogger(UserDetailsServiceImpl.class);
+    private static final Logger logger = (Logger) LoggerFactory.getLogger(UserDetailsServiceImpl.class);
 
     @Autowired
     private UserRepository userRepository;
@@ -69,6 +69,15 @@ public class UserServiceImpl implements UserService {
         eduser.setEmail(user.getEmail());
         logger.info("Update email user: ", eduser.getEmail());
         userRepository.save(eduser);
+    }
+
+    @Override
+    @Transactional
+    public void addUserAvatar(User user, String path) {
+        User avuser = getByIdUser(user.getId());
+        avuser.getContact().setAvatar(path);
+        logger.info("Add avatar for user: ", avuser.getContact().getAvatar().toString());
+        userRepository.save(avuser);
     }
 
     @Override

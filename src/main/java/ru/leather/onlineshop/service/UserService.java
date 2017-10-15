@@ -16,6 +16,8 @@ public interface UserService {
 
     void editUser(User user);
 
+    void addUserAvatar(User user, String path);
+
     Integer getByAccount(String email);
 
     void editPassword(User user);

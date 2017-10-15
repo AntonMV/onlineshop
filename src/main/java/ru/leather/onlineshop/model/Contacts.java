@@ -36,6 +36,10 @@ public class Contacts {
     @Column(name = "birthday")
     private LocalDate birthday;
 
+    @Basic
+    @Column(name = "avatar")
+    private String avatar;
+
     @OneToOne(mappedBy = "contact")
     private User user;
 
@@ -87,6 +91,14 @@ public class Contacts {
         this.user = user;
     }
 
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -98,6 +110,7 @@ public class Contacts {
         if (name != null ? !name.equals(contacts.name) : contacts.name != null) return false;
         if (address != null ? !address.equals(contacts.address) : contacts.address != null) return false;
         if (phone != null ? !phone.equals(contacts.phone) : contacts.phone != null) return false;
+        if (avatar != null ? !avatar.equals(contacts.avatar) : contacts.avatar != null) return false;
         if (birthday != null ? !birthday.equals(contacts.birthday) : contacts.birthday != null) return false;
 
         return true;
@@ -109,6 +122,7 @@ public class Contacts {
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (address != null ? address.hashCode() : 0);
         result = 31 * result + (phone != null ? phone.hashCode() : 0);
+        result = 31 * result + (avatar != null ? avatar.hashCode() : 0);
         result = 31 * result + (birthday != null ? birthday.hashCode() : 0);
         return result;
     }
