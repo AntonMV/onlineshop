@@ -3,6 +3,7 @@ package ru.leather.onlineshop.service;
 import ch.qos.logback.classic.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.leather.onlineshop.model.Contacts;
@@ -10,10 +11,13 @@ import ru.leather.onlineshop.model.Roles;
 import ru.leather.onlineshop.model.User;
 import ru.leather.onlineshop.repository.RolesRepository;
 import ru.leather.onlineshop.repository.UserRepository;
+import ru.leather.onlineshop.utils.ArbitraryResourceLoader;
 
+import java.io.File;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 import static ru.leather.onlineshop.utils.DatabasePasswordEncoder.encode;
 

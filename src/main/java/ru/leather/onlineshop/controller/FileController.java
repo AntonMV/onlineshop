@@ -20,6 +20,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
+import java.util.regex.Pattern;
 
 @Controller
 public class FileController {
@@ -44,6 +45,12 @@ public class FileController {
                 File dir = new File(rootpath.getFile().getAbsolutePath() + dirpath);
                 if (!dir.exists()){
                     dir.mkdirs();
+                }
+
+                if (!userService.getByIdUser(objUser.getId()).getContact().getAvatar().isEmpty()){
+                        File dirdel = new File(rootpath.getFile().getAbsolutePath() + File.separator + userService.getByIdUser(objUser.getId()).getContact().getAvatar());
+                        logger.info("Delete file: " + dirdel);
+                        dirdel.delete();
                 }
 
                 logger.info("uploaded dir: " + dir);
