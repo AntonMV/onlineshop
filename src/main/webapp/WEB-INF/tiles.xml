@@ -84,7 +84,6 @@
     </definition>
 
     <!-- Error Page -->
-    <!-- Product Page -->
     <definition name="404" extends="base-definition">
         <put-attribute name="title" value="Error" />
         <put-attribute name="body" value="/WEB-INF/views/tiles/template/defaultError404.jsp" />
@@ -92,5 +91,16 @@
         <put-attribute name="header" value="" />
         <put-attribute name="footer" value="" />
     </definition>
+
+    <!-- Admins Page -->
+    <definition name="panel" extends="base-definition">
+        <put-attribute name="title" value="Information" />
+        <put-attribute name="body">
+            <definition template="/WEB-INF/views/tiles/template/defaultAdmins.jsp">
+                <put-attribute name="body" value="/WEB-INF/views/pages/admin/panel.jsp" />
+            </definition>
+        </put-attribute>
+    </definition>
+
 
 </tiles-definitions>

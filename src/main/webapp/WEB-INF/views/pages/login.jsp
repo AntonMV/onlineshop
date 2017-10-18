@@ -15,6 +15,11 @@
                 <label for="exampleInputPassword1">Password</label>
                 <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"/>
             </div>
+            <span class="error">
+                <c:if test="${param.error}">
+                    ${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
+                </c:if>
+            </span>
             <div class="form-group" style="margin-bottom: 15px; display: inline-table; width: 100%">
                 <div style="display: table-row;">
                     <div style="text-align: left; display: table-cell; width: 50%;">
@@ -32,15 +37,4 @@
             <button type="submit" class="btn btn-lg btn-success">Submit</button>
         </div>
         </form:form>
-        <div style="padding: 10px;">
-            <c:if test="${param.error}">
-                <div class="error">
-                        ${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
-                </div>
-            </c:if>
-            <c:if test="${param.logout}">
-                You have been logged out.
-            </c:if>
-        </div>
     </div>
-</div>
