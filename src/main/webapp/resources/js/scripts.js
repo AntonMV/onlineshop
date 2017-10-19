@@ -1,20 +1,20 @@
 $(function() {
     var str=location.href.toLowerCase();
-    $('.navbar-nav li a').each(function() {
+    $('#panhead li a').each(function() {
         if (str.indexOf(this.href.toLowerCase()) > -1) {
-            $('.navbar-nav li').removeClass("active");
+            $('#panhead li').removeClass("active");
             $(this).parent().toggleClass("active");
         }
     });
-    $('.nav-pills li a').each(function() {
+    $('#panuser li a').each(function() {
         if (str.indexOf(this.href.toLowerCase()) > -1) {
-            $('.nav-pills li').removeClass("active");
+            $('#panuser li').removeClass("active");
             $(this).parent().toggleClass("active");
         }
     });
-    $('.nav-sidebar li a').each(function() {
+    $('#panprod li a').each(function() {
         if (str.indexOf(this.href.toLowerCase()) > -1) {
-            $('.nav-sidebar li').removeClass("active");
+            $('#panprod li').removeClass("active");
             $(this).parent().toggleClass("active");
         }
     });

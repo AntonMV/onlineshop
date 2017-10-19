@@ -102,5 +102,23 @@
         </put-attribute>
     </definition>
 
+    <definition name="orrder" extends="base-definition">
+        <put-attribute name="title" value="Information" />
+        <put-attribute name="body">
+            <definition template="/WEB-INF/views/tiles/template/defaultAdmins.jsp">
+                <put-attribute name="body" value="/WEB-INF/views/pages/admin/orrder.jsp" />
+            </definition>
+        </put-attribute>
+    </definition>
+
+    <definition name="controluser" extends="base-definition">
+        <put-attribute name="title" value="Information" />
+        <put-attribute name="body">
+            <definition template="/WEB-INF/views/tiles/template/defaultAdmins.jsp">
+                <put-attribute name="body" value="/WEB-INF/views/pages/admin/controluser.jsp" />
+            </definition>
+        </put-attribute>
+    </definition>
+
 
 </tiles-definitions>

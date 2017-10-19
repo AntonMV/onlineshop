@@ -10,6 +10,11 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-3 col-md-3">
+            <ul id="panprod" class="nav nav-pills nav-stacked">
+                <li><a href="adminpanel">Товары</a></li>
+                <li><a href="orrder">Заказы</a></li>
+                <li><a href="controluser">Пользователи</a></li>
+            </ul>
         </div>
         <div class="col-sm-9">
             <tiles:insertAttribute name="body" />

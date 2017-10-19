@@ -47,7 +47,7 @@
                 <div class="panel-body">
                     <h4>Данные пользователя</h4>
                     <div class="tab-content">
-                        <ul class="nav nav-pills">
+                        <ul id="panuser" class="nav nav-pills">
                             <li><a href="users">О пользователе</a></li>
                             <li><a href="users/edit">Редактировать</a></li>
                             <li><a href="users/email">Сменить email</a></li>

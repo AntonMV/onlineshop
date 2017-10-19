@@ -18,7 +18,7 @@
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
+                <ul id="panhead" class="nav navbar-nav">
                     <li><a href="products">Products <span class="sr-only">(current)</span></a></li>
                     <sec:authorize access="hasRole('ROLE_USER')">
                         <li><a href="users">User profile</a></li>

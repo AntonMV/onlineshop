@@ -21,4 +21,18 @@ public class AdminController {
         model.put("allProduct", productService.getAll());
         return "panel";
     }
+
+    @Secured(value = {"ROLE_ADMIN"})
+    @RequestMapping(value = "/orrder", method = RequestMethod.GET)
+    public String orrder(Map<String, Object> model) {
+        model.put("allProduct", productService.getAll());
+        return "orrder";
+    }
+
+    @Secured(value = {"ROLE_ADMIN"})
+    @RequestMapping(value = "/controluser", method = RequestMethod.GET)
+    public String controllEditUser(Map<String, Object> model) {
+        model.put("allProduct", productService.getAll());
+        return "controluser";
+    }
 }
