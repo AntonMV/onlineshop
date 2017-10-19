@@ -4,19 +4,8 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 
-<div id="toolbar" class="btn-group">
-    <button type="button" class="btn btn-default">
-        <i class="glyphicon glyphicon-plus"></i>
-    </button>
-    <button type="button" class="btn btn-default">
-        <i class="glyphicon glyphicon-heart"></i>
-    </button>
-    <button type="button" class="btn btn-default">
-        <i class="glyphicon glyphicon-trash"></i>
-    </button>
-</div>
 
-<table class="table table-striped">
+<table id="prod" class="table table-striped table-bordered" cellspacing="0" width="100%">
     <thead>
     <tr>
         <th>ID</th>
@@ -25,6 +14,7 @@
         <th>Price</th>
         <th>Quantity</th>
     </tr>
+    </thead>
     <c:if test="${!empty allProduct}">
         <c:forEach var="product" items="${allProduct}">
             <tr>
@@ -36,5 +26,4 @@
             </tr>
         </c:forEach>
     </c:if>
-    </thead>
 </table>

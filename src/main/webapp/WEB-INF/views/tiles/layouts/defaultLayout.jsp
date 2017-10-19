@@ -20,15 +20,18 @@
 
     <base href="${pageContext.request.contextPath}/"/>
     <!-- Bootstrap core CSS -->
-    <link href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="webjars/bootstrap/3.3.7-1/css/bootstrap.min.css">
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link href="/resources/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/resources/css/ie10-viewport-bug-workaround.css">
     <!-- Custom styles for this template -->
-    <link href="/resources/css/justified-nav.css" rel="stylesheet">
-    <link href="/resources/css/user.css" rel="stylesheet">
-    <link href="/resources/css/404.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/resources/css/justified-nav.css">
+    <link rel="stylesheet" type="text/css" href="/resources/css/user.css">
+    <link rel="stylesheet" type="text/css" href="/resources/css/404.css">
     <!-- Font Awesome-->
-    <link rel="stylesheet" href="/resources/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/resources/css/font-awesome.min.css">
+    <!--Datatables-->
+    <link rel="stylesheet" type="text/css" href="webjars/datatables/1.10.16/media/css/dataTables.bootstrap.min.css">
+
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="/resources/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="/resources/js/ie-emulation-modes-warning.js"></script>
@@ -37,14 +40,17 @@
     <script src="/resources/js/html5shiv.min.js"></script>
     <script src="/resources/js/respond.min.js"></script>
     <![endif]-->
-    <script type="text/javascript" src="/webjars/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js" defer></script>
+    <script type="text/javascript" src="webjars/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="webjars/bootstrap/3.3.7-1/js/bootstrap.min.js" defer></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script type="text/javascript" src="/resources/js/ie10-viewport-bug-workaround.js"></script>
     <!--Custom scripts-->
     <script type="text/javascript" src="/resources/js/scripts.js"></script>
     <!--Validator-->
-    <script type="text/javascript" src="/webjars/bootstrap-validator/0.7.3/js/validator.js"></script>
+    <script type="text/javascript" src="webjars/bootstrap-validator/0.7.3/js/validator.js"></script>
+    <!--Datatables-->
+    <script type="text/javascript" src="webjars/datatables/1.10.16/media/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="webjars/datatables/1.10.16/media/js/dataTables.bootstrap.min.js"></script>
 
 </head>
 

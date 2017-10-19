@@ -27,4 +27,5 @@ $(function() {
         $(this).next('label').html('<i class="fa fa-file"></i> ' + fileName);
     });
 
+    $("#prod").dataTable();
 });
