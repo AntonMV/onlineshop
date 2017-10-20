@@ -38,9 +38,9 @@
     </definition>
 
     <!-- Product Page -->
-    <definition name="orders" extends="base-definition">
+    <definition name="order" extends="base-definition">
         <put-attribute name="title" value="Products" />
-        <put-attribute name="body" value="/WEB-INF/views/pages/orders.jsp" />
+        <put-attribute name="body" value="/WEB-INF/views/pages/order.jsp" />
     </definition>
 
     <!-- Users information Page -->
@@ -102,20 +102,20 @@
         </put-attribute>
     </definition>
 
-    <definition name="orrder" extends="base-definition">
-        <put-attribute name="title" value="Information" />
+    <definition name="controluser" extends="base-definition">
+        <put-attribute name="title" value="ControlUser" />
         <put-attribute name="body">
             <definition template="/WEB-INF/views/tiles/template/defaultAdmins.jsp">
-                <put-attribute name="body" value="/WEB-INF/views/pages/admin/orrder.jsp" />
+                <put-attribute name="body" value="/WEB-INF/views/pages/admin/controluser.jsp" />
             </definition>
         </put-attribute>
     </definition>
 
-    <definition name="controluser" extends="base-definition">
-        <put-attribute name="title" value="Information" />
+    <definition name="orders" extends="base-definition">
+        <put-attribute name="title" value="Orders" />
         <put-attribute name="body">
             <definition template="/WEB-INF/views/tiles/template/defaultAdmins.jsp">
-                <put-attribute name="body" value="/WEB-INF/views/pages/admin/controluser.jsp" />
+                <put-attribute name="body" value="/WEB-INF/views/pages/admin/orders.jsp" />
             </definition>
         </put-attribute>
     </definition>

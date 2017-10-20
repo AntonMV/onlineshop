@@ -22,6 +22,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.regex.Pattern;
 
+import static ru.leather.onlineshop.utils.NullOrEmpty.IsNullOrEmpty;
+
 @Controller
 public class FileController {
 
@@ -47,7 +49,7 @@ public class FileController {
                     dir.mkdirs();
                 }
 
-                if (!userService.getByIdUser(objUser.getId()).getContact().getAvatar().isEmpty()){
+                if (!IsNullOrEmpty(userService.getByIdUser(objUser.getId()).getContact().getAvatar())){
                         File dirdel = new File(rootpath.getFile().getAbsolutePath() + File.separator + userService.getByIdUser(objUser.getId()).getContact().getAvatar());
                         logger.info("Delete file: " + dirdel);
                         dirdel.delete();

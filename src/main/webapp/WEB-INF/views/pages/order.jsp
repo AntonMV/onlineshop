@@ -8,27 +8,23 @@
     <thead>
     <tr>
         <th>ID</th>
-        <th>Email</th>
-        <th>Registered</th>
-        <th>Enable</th>
+        <th>productId</th>
+        <th>quantity</th>
+        <th>purdate</th>
         <th>Edit</th>
         <th>Delete</th>
     </tr>
     </thead>
-    <c:if test="${!empty allUsers}">
-        <c:forEach var="user" items="${allUsers}">
+    <c:if test="${!empty myOrder}">
+        <c:forEach var="order" items="${myOrder}">
             <tr style="text-align: center;">
-                <td>${user.id}</td>
-                <td>${user.email}</td>
-                <td>${user.registered}</td>
-                <td>${user.enable}</td>
+                <td>${order.id}</td>
+                <td>${order.productId}</td>
+                <td>${order.quantity}</td>
+                <td>${order.purdate}</td>
                 <td><a href="adminpanel"><span style="font-size: 15px; line-height: 0.8;" class="glyphicon glyphicon-pencil"/></a></td>
                 <td><a href="adminpanel"><span style="font-size: 15px; line-height: 0.8;" class="glyphicon glyphicon-remove"/></a></td>
             </tr>
         </c:forEach>
     </c:if>
 </table>
-<div class="row" style="padding-left: 15px;">
-    <hr>
-    <button type="submit" class="btn btn-success">Добавить пользователя</button>
-</div>

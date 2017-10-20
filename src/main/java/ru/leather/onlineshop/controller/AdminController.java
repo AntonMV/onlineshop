@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import ru.leather.onlineshop.service.ProductService;
+import ru.leather.onlineshop.service.UserService;
 
 import java.util.Map;
 
@@ -15,6 +16,9 @@ public class AdminController {
     @Autowired
     private ProductService productService;
 
+    @Autowired
+    private UserService userService;
+
     @Secured(value = {"ROLE_ADMIN"})
     @RequestMapping(value = "/adminpanel", method = RequestMethod.GET)
     public String login(Map<String, Object> model) {
@@ -23,16 +27,9 @@ public class AdminController {
     }
 
     @Secured(value = {"ROLE_ADMIN"})
-    @RequestMapping(value = "/orrder", method = RequestMethod.GET)
-    public String orrder(Map<String, Object> model) {
-        model.put("allProduct", productService.getAll());
-        return "orrder";
-    }
-
-    @Secured(value = {"ROLE_ADMIN"})
     @RequestMapping(value = "/controluser", method = RequestMethod.GET)
     public String controllEditUser(Map<String, Object> model) {
-        model.put("allProduct", productService.getAll());
+        model.put("allUsers", userService.getAll());
         return "controluser";
     }
 }

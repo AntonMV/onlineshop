@@ -22,15 +22,15 @@
                     <li><a href="products">Products <span class="sr-only">(current)</span></a></li>
                     <sec:authorize access="hasRole('ROLE_USER')">
                         <li><a href="users">User profile</a></li>
-                        <li><a href="orders">History of orders</a></li>
+                        <li><a href="order">History of orders</a></li>
                     </sec:authorize>
                     <sec:authorize access="hasRole('ROLE_ADMIN')">
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin panel <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
+                                <li><a href="adminpanel">Product</a></li>
+                                <li><a href="controluser">Users</a></li>
+                                <li><a href="orders">Orders</a></li>
                                 <li role="separator" class="divider"></li>
                                 <li><a href="#">Separated link</a></li>
                                 <li role="separator" class="divider"></li>

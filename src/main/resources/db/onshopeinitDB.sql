@@ -97,6 +97,19 @@ CREATE TABLE `product` (
 LOCK TABLES `product` WRITE;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
 INSERT INTO `product` VALUES (1,'Asus','noutbook',4,2000,'EMS');
+INSERT INTO `product` VALUES (2,'Asus','noutbook',4,2000,'EMS');
+INSERT INTO `product` VALUES (3,'Asus','noutbook',4,2000,'EMS');
+INSERT INTO `product` VALUES (4,'Asus','noutbook',4,2000,'EMS');
+INSERT INTO `product` VALUES (5,'Asus','noutbook',4,2000,'EMS');
+INSERT INTO `product` VALUES (6,'Asus','noutbook',4,2000,'EMS');
+INSERT INTO `product` VALUES (7,'Asus','noutbook',4,2000,'EMS');
+INSERT INTO `product` VALUES (8,'Asus','noutbook',4,2000,'EMS');
+INSERT INTO `product` VALUES (9,'Asus','noutbook',4,2000,'EMS');
+INSERT INTO `product` VALUES (10,'Asus','noutbook',4,2000,'EMS');
+INSERT INTO `product` VALUES (11,'Asus','noutbook',4,2000,'EMS');
+INSERT INTO `product` VALUES (12,'Asus','noutbook',4,2000,'EMS');
+INSERT INTO `product` VALUES (13,'Asus','noutbook',4,2000,'EMS');
+INSERT INTO `product` VALUES (14,'Asus','noutbook',4,2000,'EMS');
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
 UNLOCK TABLES;
 
