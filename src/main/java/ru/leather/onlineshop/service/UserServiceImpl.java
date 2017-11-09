@@ -25,7 +25,7 @@ import static ru.leather.onlineshop.utils.DatabasePasswordEncoder.encode;
 @Service
 public class UserServiceImpl implements UserService {
 
-    private static final Logger logger = (Logger) LoggerFactory.getLogger(UserDetailsServiceImpl.class);
+    private static final Logger logger = (Logger) LoggerFactory.getLogger(UserServiceImpl.class);
 
     @Autowired
     private UserRepository userRepository;
